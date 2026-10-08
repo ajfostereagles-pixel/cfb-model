@@ -1,0 +1,92 @@
+[
+ {
+  "h": "Liberty",
+  "a": "Sam Houston",
+  "t": "2026-10-08T23:00:00Z",
+  "fp": 0.83
+ },
+ {
+  "h": "Western Kentucky",
+  "a": "Missouri State",
+  "t": "2026-10-08T23:00:00Z",
+  "fp": 0.526
+ },
+ {
+  "h": "UTSA",
+  "a": "South Florida",
+  "t": "2026-10-08T23:30:00Z",
+  "fp": 0.712
+ },
+ {
+  "h": "Arkansas State",
+  "a": "South Alabama",
+  "t": "2026-10-08T23:30:00Z",
+  "fp": 0.568
+ },
+ {
+  "h": "Alabama State",
+  "a": "Florida A&M",
+  "t": "2026-10-09T16:00:00Z",
+  "fp": 0.855
+ },
+ {
+  "h": "Marist",
+  "a": "Columbia",
+  "t": "2026-10-09T23:00:00Z",
+  "fp": 0.504
+ },
+ {
+  "h": "Louisville",
+  "a": "Florida State",
+  "t": "2026-10-09T23:00:00Z",
+  "fp": 0.624
+ },
+ {
+  "h": "San Jos\u00e9 State",
+  "a": "Wyoming",
+  "t": "2026-10-10T01:00:00Z",
+  "fp": 0.692
+ },
+ {
+  "h": "Washington",
+  "a": "Iowa",
+  "t": "2026-10-10T01:00:00Z",
+  "fp": 0.6
+ },
+ {
+  "h": "Utah State",
+  "a": "Washington State",
+  "t": "2026-10-10T01:00:00Z",
+  "fp": 0.658
+ },
+ {
+  "h": "BYU",
+  "a": "Iowa State",
+  "t": "2026-10-10T02:15:00Z",
+  "fp": null
+ },
+ {
+  "h": "Pittsburgh",
+  "a": "North Carolina",
+  "t": "2026-10-10T16:00:00Z",
+  "fp": null
+ },
+ {
+  "h": "Yale",
+  "a": "Dartmouth",
+  "t": "2026-10-10T16:00:00Z",
+  "fp": null
+ },
+ {
+  "h": "NC State",
+  "a": "Wake Forest",
+  "t": "2026-10-10T16:00:00Z",
+  "fp": null
+ },
+ {
+  "h": "Army",
+  "a": "Tulane",
+  "t": "2026-10-10T16:00:00Z",
+  "fp": null
+ }
+]
