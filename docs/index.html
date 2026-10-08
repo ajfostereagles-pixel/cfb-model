@@ -11,34 +11,52 @@
 <style>
 /* Layout: a header, a sticky three-page tab bar (This week, Results, Model details), then one idea per screen. Cards for picks, plain lists for results, tables only on the details page. */
 :root {
-  --plane: #f9f9f7;
-  --surface: #fcfcfb;
-  --ink: #0b0b0b;
-  --ink2: #52514e;
-  --muted: #898781;
-  --grid: #e1e0d9;
-  --axis: #c3c2b7;
-  --border: rgba(11, 11, 11, 0.10);
+  --plane: #eaf0ec;
+  --surface: #ffffff;
+  --ink: #0e1a14;
+  --ink2: #4a5a51;
+  --muted: #7b8a82;
+  --grid: #e0e8e3;
+  --axis: #bccac2;
+  --border: rgba(14, 26, 20, 0.10);
+  --brand: #0b6e4f;
+  --brand-ink: #ffffff;
+  --strong: #0b6e4f;
+  --strong-bg: #dff3e8;
+  --lean: #b7791f;
+  --lean-bg: #fdf0d2;
+  --win-bg: #dff3e8;
+  --loss-bg: #fbe3e0;
+  --shadow: 0 1px 2px rgba(14, 26, 20, 0.06), 0 6px 18px rgba(14, 26, 20, 0.05);
   --s-blind: #eb6834;
   --s-aware: #2a78d6;
   --s-enh: #1baf7a;
   --good: #0ca30c;
   --warn: #fab219;
   --crit: #d03b3b;
-  --good-text: #006300;
-  --crit-text: #a82424;
+  --good-text: #0a7a3f;
+  --crit-text: #b3261e;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --plane: #0d0d0d;
-    --surface: #1a1a19;
-    --ink: #ffffff;
-    --ink2: #c3c2b7;
-    --muted: #898781;
-    --grid: #2c2c2a;
-    --axis: #383835;
+    --plane: #08110d;
+    --surface: #101b15;
+    --ink: #f2f7f4;
+    --ink2: #b5c4bb;
+    --muted: #7f9088;
+    --grid: #1e2c24;
+    --axis: #2f4036;
     --border: rgba(255, 255, 255, 0.10);
+    --brand: #0f8a63;
+    --brand-ink: #ffffff;
+    --strong: #3ddc97;
+    --strong-bg: rgba(61, 220, 151, 0.14);
+    --lean: #f2b84b;
+    --lean-bg: rgba(242, 184, 75, 0.14);
+    --win-bg: rgba(61, 220, 151, 0.14);
+    --loss-bg: rgba(240, 122, 122, 0.16);
+    --shadow: none;
     --s-blind: #d95926;
     --s-aware: #3987e5;
     --s-enh: #199e70;
@@ -48,14 +66,23 @@
   }
 }
 :root[data-theme="dark"] {
-  --plane: #0d0d0d;
-  --surface: #1a1a19;
-  --ink: #ffffff;
-  --ink2: #c3c2b7;
-  --muted: #898781;
-  --grid: #2c2c2a;
-  --axis: #383835;
+  --plane: #08110d;
+  --surface: #101b15;
+  --ink: #f2f7f4;
+  --ink2: #b5c4bb;
+  --muted: #7f9088;
+  --grid: #1e2c24;
+  --axis: #2f4036;
   --border: rgba(255, 255, 255, 0.10);
+  --brand: #0f8a63;
+  --brand-ink: #ffffff;
+  --strong: #3ddc97;
+  --strong-bg: rgba(61, 220, 151, 0.14);
+  --lean: #f2b84b;
+  --lean-bg: rgba(242, 184, 75, 0.14);
+  --win-bg: rgba(61, 220, 151, 0.14);
+  --loss-bg: rgba(240, 122, 122, 0.16);
+  --shadow: none;
   --s-blind: #d95926;
   --s-aware: #3987e5;
   --s-enh: #199e70;
@@ -231,12 +258,89 @@ details > .inner { padding: 4px 20px 20px; display: flex; flex-direction: column
 .gloss { display: grid; gap: 8px; color: var(--ink2); }
 .gloss b { color: var(--ink); }
 .gloss p { max-width: 74ch; }
+
+/* ===== v2: color and layout polish ===== */
+body { background: var(--plane); }
+.masthead { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; border-radius: 16px; color: var(--brand-ink); background-color: var(--brand); background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.055) 0 44px, transparent 44px 88px); box-shadow: var(--shadow); }
+.masthead h1 { font-size: 28px; color: inherit; }
+.masthead .sub { color: rgba(255,255,255,0.85); margin-top: 4px; font-size: 14px; }
+.mast-ball { width: 64px; height: 40px; flex: none; color: rgba(255,255,255,0.9); transform: rotate(-18deg); }
+@media (max-width: 480px) { .mast-ball { display: none; } .masthead { padding: 18px; } }
+
+.tabs { background: var(--plane); gap: 6px; padding-block: 10px; border-bottom: 0; }
+.tab { border: 1px solid var(--border); background: var(--surface); border-radius: 999px; padding: 10px 8px; font-size: 15px; }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--plane); border-color: var(--ink); }
+.page-head h2 { font-size: 24px; }
+
+.panel, .rows, details, .gcard { box-shadow: var(--shadow); }
+.panel { border-radius: 16px; }
+
+/* pick tiers: green = strong, gold = lean */
+.badge { border: 0; padding: 4px 11px; }
+.badge.strong { background: var(--strong); color: #fff; }
+.badge.lean { background: var(--lean-bg); color: var(--lean); box-shadow: inset 0 0 0 1.5px var(--lean); }
+.badge.pass { background: var(--grid); color: var(--ink2); }
+.badge.noline, .badge.pending { background: transparent; box-shadow: inset 0 0 0 1.5px var(--axis); color: var(--ink2); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .badge.strong { color: #06281a; } }
+:root[data-theme="dark"] .badge.strong { color: #06281a; }
+
+.gcard { position: relative; overflow: hidden; border-radius: 16px; padding: 18px 20px 18px 26px; border: 1px solid var(--border); }
+.gcard::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 8px; background: var(--axis); }
+.gcard.tier-strong { border-color: var(--border); }
+.gcard.tier-strong::before { background: var(--strong); }
+.gcard.tier-lean::before { background: var(--lean); }
+.team { font-size: 18px; }
+.team .score { font-size: 28px; }
+.team.win .score { color: var(--ink); }
+.pickbox { border-left: 0; padding: 14px 16px; border-radius: 12px; background: var(--strong-bg); }
+.gcard.tier-lean .pickbox { background: var(--lean-bg); }
+.pick-lbl { color: var(--strong); text-transform: none; letter-spacing: 0; font-size: 14px; }
+.gcard.tier-lean .pick-lbl { color: var(--lean); }
+.pick-val { font-size: 26px; color: var(--ink); }
+.pick-sub { color: var(--ink2); }
+.wp-bar { background: var(--grid); height: 10px; border-radius: 5px; }
+.wp-bar i { background: var(--strong); border-radius: 5px; }
+.gcard.tier-lean .wp-bar i { background: var(--lean); }
+.ctx { color: var(--ink2); }
+
+.rows { border-radius: 16px; overflow: hidden; }
+.grow:nth-child(even) { background: color-mix(in srgb, var(--plane) 55%, transparent); }
+.day { color: var(--brand); text-transform: none; letter-spacing: 0; font-size: 16px; margin-top: 10px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .day { color: var(--strong); } }
+:root[data-theme="dark"] .day { color: var(--strong); }
+
+.tiers div { background: var(--plane); border-radius: 12px; padding: 12px 14px; }
+.notice { border-radius: 14px; background: var(--lean-bg); border-color: transparent; border-left: 4px solid var(--lean); color: var(--ink); }
+.notice svg { color: var(--lean); }
+
+.chip { background: var(--surface); }
+.chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.chip[aria-pressed="true"] .dot { box-shadow: 0 0 0 2px rgba(255,255,255,0.7); }
+
+/* results */
+.eyebrow { text-transform: none; letter-spacing: 0; font-size: 14px; }
+.record { color: var(--ink); }
+.pill { border: 0; background: var(--plane); box-shadow: inset 0 0 0 1.5px var(--tone, var(--axis)); }
+.pill[data-tone="good"] { background: var(--win-bg); } .pill[data-tone="crit"] { background: var(--loss-bg); } .pill[data-tone="warn"] { background: var(--lean-bg); }
+.stat { background: var(--plane); border: 0; border-radius: 12px; padding: 12px 14px; }
+.stat dd.pos { color: var(--good-text); } .stat dd.neg { color: var(--crit-text); }
+.pk { padding: 12px 14px; border: 0; border-radius: 12px; margin-bottom: 8px; background: var(--plane); border-left: 5px solid var(--axis); }
+.pk:first-child { padding-top: 12px; }
+.pk:has(.won) { border-left-color: var(--good-text); }
+.pk:has(.lost) { border-left-color: var(--crit-text); }
+.pk-res.won .r { background: var(--win-bg); } .pk-res.lost .r { background: var(--loss-bg); }
+.pk-res .r { padding: 3px 10px; border-radius: 999px; }
+th { background: transparent; }
+details > summary { padding: 16px 20px; }
 </style>
 
 <main class="app">
-  <header>
-    <h1>Gridiron Edge</h1>
-    <p class="sub" id="asof"></p>
+  <header class="masthead">
+    <div class="mast-text">
+      <h1>Gridiron Edge</h1>
+      <p class="sub" id="asof"></p>
+    </div>
+    <svg class="mast-ball" viewBox="0 0 64 40" aria-hidden="true"><ellipse cx="32" cy="20" rx="29" ry="16" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M32 8v24M25 14h14M24 20h16M25 26h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
   </header>
 
   <nav class="tabs" role="tablist" aria-label="Pages">
@@ -759,6 +863,7 @@ details > .inner { padding: 4px 20px 20px; display: flex; flex-direction: column
     var pill = $('#rPill'); pill.setAttribute('data-tone', v.tone); pill.innerHTML = PILL[v.tone] + '<span>' + v.label + '</span>';
     $('#rText').textContent = v.text;
     $('#rProfit').textContent = q.n ? fmtU(q.units) + ' units' : '—';
+    $('#rProfit').className = q.n ? (q.units >= 0 ? 'pos' : 'neg') : '';
     $('#rProfitNote').textContent = q.n ? 'If every bet were $100: ' + fmtMoney(q.units * 100) : '';
     $('#rPicks').textContent = q.n ? fmtN(q.n) : '0';
     $('#rLuck').textContent = q.n ? Math.round(q.p * 100) + '%' : '—';
