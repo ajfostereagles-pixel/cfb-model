@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gridiron Edge NFL</title>
+<style>body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<style>
+
+/* Layout: a header, a sticky three-page tab bar (This week, Results, Model details), then one idea per screen. Cards for picks, plain lists for results, tables only on the details page. */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+:root {
+  --plane: #080c12;
+  --surface: #111923;
+  --raise: #172231;
+  --ink: #f4f7fb;
+  --ink2: #aab7c6;
+  --muted: #75869a;
+  --grid: #1c2938;
+  --axis: #2d3d50;
+  --border: rgba(255, 255, 255, 0.08);
+  --brand: #19e08a;
+  --brand-ink: #04170e;
+  --strong: #19e08a;
+  --strong-bg: rgba(25, 224, 138, 0.12);
+  --lean: #ffc23d;
+  --lean-bg: rgba(255, 194, 61, 0.12);
+  --win-bg: rgba(25, 224, 138, 0.14);
+  --loss-bg: rgba(255, 107, 107, 0.15);
+  --s-blind: #ff7a45;
+  --s-aware: #4b97f5;
+  --s-enh: #19e08a;
+  --good: #19e08a;
+  --warn: #ffc23d;
+  --crit: #ff6b6b;
+  --good-text: #3deba0;
+  --crit-text: #ff8585;
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 8px 24px rgba(0, 0, 0, 0.35);
+  --disp: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --plane: #eef1f6; --surface: #ffffff; --raise: #f4f6fa; --ink: #0b1420; --ink2: #475569; --muted: #7a8799;
+    --grid: #e4e9f0; --axis: #c5cedb; --border: rgba(11, 20, 32, 0.09);
+    --brand: #0a9b5c; --brand-ink: #ffffff; --strong: #0a9b5c; --strong-bg: #dcf5e8; --lean: #b7791f; --lean-bg: #fff0cc;
+    --win-bg: #dcf5e8; --loss-bg: #fde3e1; --s-blind: #e8632f; --s-aware: #2a78d6; --s-enh: #0a9b5c;
+    --good-text: #0a7a48; --crit-text: #c0322b; --crit: #d03b3b;
+    --shadow: 0 1px 2px rgba(11, 20, 32, 0.06), 0 8px 24px rgba(11, 20, 32, 0.06);
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --plane: #eef1f6; --surface: #ffffff; --raise: #f4f6fa; --ink: #0b1420; --ink2: #475569; --muted: #7a8799;
+  --grid: #e4e9f0; --axis: #c5cedb; --border: rgba(11, 20, 32, 0.09);
+  --brand: #0a9b5c; --brand-ink: #ffffff; --strong: #0a9b5c; --strong-bg: #dcf5e8; --lean: #b7791f; --lean-bg: #fff0cc;
+  --win-bg: #dcf5e8; --loss-bg: #fde3e1; --s-blind: #e8632f; --s-aware: #2a78d6; --s-enh: #0a9b5c;
+  --good-text: #0a7a48; --crit-text: #c0322b; --crit: #d03b3b;
+  --shadow: 0 1px 2px rgba(11, 20, 32, 0.06), 0 8px 24px rgba(11, 20, 32, 0.06);
+  color-scheme: light;
+}
+
+body { background: var(--plane); color: var(--ink); font: 16px/1.55 var(--font); padding-inline: clamp(16px, 4vw, 32px); padding-block: 24px 64px; }
+* { box-sizing: border-box; }
+.app { max-width: 960px; margin-inline: auto; display: flex; flex-direction: column; gap: 20px; }
+h1 { font-size: 26px; line-height: 1.15; font-weight: 700; margin: 0; letter-spacing: -0.02em; }
+h2 { font-size: 22px; line-height: 1.25; font-weight: 650; margin: 0; letter-spacing: -0.01em; }
+h3 { font-size: 16px; line-height: 1.3; font-weight: 650; margin: 0 0 8px; }
+p { margin: 0; }
+.sub { color: var(--ink2); margin-top: 4px; }
+.muted { color: var(--ink2); }
+.small { font-size: 14px; }
+.lead { color: var(--ink2); max-width: 66ch; }
+.page { display: flex; flex-direction: column; gap: 20px; }
+.page-head { display: flex; flex-direction: column; gap: 6px; }
+
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; min-width: 0; }
+@media (min-width: 640px) { .panel { padding: 24px; } }
+.panel > h2 + .lead, .panel > h2 + p { margin-top: 6px; }
+.panel .body { margin-top: 16px; }
+.cap { margin-top: 12px; color: var(--ink2); font-size: 14px; max-width: 70ch; }
+
+/* tabs */
+.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--plane); display: flex; gap: 4px; padding-block: 8px; border-bottom: 1px solid var(--border); margin-inline: calc(-1 * clamp(16px, 4vw, 32px)); padding-inline: clamp(16px, 4vw, 32px); }
+.tab { flex: 1; font: inherit; font-weight: 600; color: var(--ink2); background: none; border: 0; border-bottom: 3px solid transparent; padding: 10px 6px; cursor: pointer; border-radius: 6px 6px 0 0; }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.tab:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
+
+/* chips and selects */
+.toolbar { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
+.tool { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.tool .lbl { font-size: 14px; font-weight: 600; color: var(--ink2); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: inherit; font-size: 15px; color: var(--ink2); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; line-height: 1.2; }
+.chip:hover { color: var(--ink); }
+.chip[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); font-weight: 600; }
+.chip:focus-visible, select:focus-visible, .btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+select { font: inherit; font-size: 15px; color: var(--ink); background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 30px 8px 12px; min-width: 0; }
+.btn { font: inherit; font-weight: 600; color: var(--ink); background: var(--surface); border: 1px solid var(--axis); border-radius: 8px; padding: 10px 18px; cursor: pointer; align-self: center; }
+.btn:hover { border-color: var(--ink); }
+.dot { width: 10px; height: 10px; border-radius: 50%; flex: none; display: inline-block; }
+.dot.blind { background: var(--s-blind); } .dot.aware { background: var(--s-aware); } .dot.enh { background: var(--s-enh); }
+
+/* notices */
+.notice { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 1px solid var(--border); border-left: 4px solid var(--warn); border-radius: 10px; background: var(--surface); color: var(--ink2); }
+.notice svg { width: 20px; height: 20px; flex: none; margin-top: 2px; color: var(--warn); }
+.notice b { color: var(--ink); }
+.notice code, .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; background: var(--plane); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; color: var(--ink); }
+
+/* badges */
+.badge { display: inline-flex; align-items: center; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; padding: 3px 10px; border-radius: 999px; border: 1.5px solid var(--ink); white-space: nowrap; }
+.badge.strong { background: var(--ink); color: var(--plane); }
+.badge.lean { background: transparent; color: var(--ink); }
+.badge.pass { border-color: var(--axis); color: var(--ink2); font-weight: 600; }
+.badge.noline, .badge.pending { border-color: var(--axis); color: var(--ink2); font-weight: 600; border-style: dashed; }
+
+/* this week: pick cards */
+.tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px 24px; margin-top: 14px; }
+.tiers div { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; color: var(--ink2); font-size: 14px; }
+.cards { display: flex; flex-direction: column; gap: 14px; }
+.gcard { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; }
+.g-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; color: var(--ink2); font-size: 14px; }
+.g-main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+@media (min-width: 640px) { .g-main { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 28px; } }
+.team { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-block: 4px; font-size: 18px; color: var(--ink2); }
+.team .score { font-size: 24px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.team.win { color: var(--ink); font-weight: 650; }
+.team + .team { border-top: 1px solid var(--grid); }
+.pickbox { border-left: 3px solid var(--ink); padding-left: 16px; }
+.pick-lbl { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink2); }
+.pick-val { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; margin-top: 2px; }
+.pick-sub { color: var(--ink2); font-size: 14px; margin-top: 6px; }
+.pick-sub div + div { margin-top: 2px; }
+.wp { display: flex; flex-direction: column; gap: 6px; }
+.wp-bar { height: 8px; border-radius: 4px; background: var(--grid); overflow: hidden; }
+.wp-bar i { display: block; height: 100%; background: var(--s-enh); border-radius: 4px 0 0 4px; }
+.wp-txt { font-size: 14px; color: var(--ink2); }
+.ctx { font-size: 14px; color: var(--ink2); }
+.day { margin: 8px 0 -4px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink2); }
+.rows { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.grow { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px 16px; padding: 14px 18px; border-bottom: 1px solid var(--grid); }
+.grow:last-child { border-bottom: 0; }
+@media (min-width: 720px) { .grow { grid-template-columns: 78px minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr); align-items: center; } }
+.gr-time { color: var(--ink2); font-size: 14px; font-variant-numeric: tabular-nums; }
+.gr-game { font-weight: 600; }
+.gr-game span { font-weight: 400; color: var(--ink2); }
+.gr-line, .gr-model { color: var(--ink2); font-size: 14px; }
+.gr-pick { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 14px; }
+.gr-pick b { font-weight: 650; }
+.neutral-tag { font-size: 12px; color: var(--muted); font-weight: 500; margin-left: 6px; }
+.empty-state { text-align: left; }
+.empty-state ol { margin: 12px 0 0; padding-left: 22px; display: grid; gap: 6px; }
+
+/* results */
+.rhero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+@media (min-width: 760px) { .rhero { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: center; } }
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink2); }
+.record { font-size: clamp(54px, 12vw, 80px); line-height: 1; font-weight: 700; letter-spacing: -0.03em; margin-top: 6px; }
+.rsub { color: var(--ink2); margin-top: 8px; }
+.pill { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 6px 14px 6px 10px; border: 1px solid var(--border); border-radius: 999px; font-weight: 600; background: var(--plane); }
+.pill svg { width: 20px; height: 20px; flex: none; color: var(--tone, var(--ink2)); }
+.pill[data-tone="crit"] { --tone: var(--crit); } .pill[data-tone="warn"] { --tone: var(--warn); } .pill[data-tone="good"] { --tone: var(--good); }
+.vtext { margin-top: 12px; color: var(--ink2); max-width: 54ch; }
+.stats { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 0; }
+.stat { border-top: 1px solid var(--border); padding-top: 10px; }
+.stat dt { font-size: 14px; color: var(--ink2); }
+.stat dd { margin: 2px 0 0; font-size: 28px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
+.stat .note { display: block; font-size: 14px; font-weight: 400; letter-spacing: 0; color: var(--ink2); margin-top: 2px; }
+.plist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.pk { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--grid); }
+.pk:first-child { padding-top: 4px; }
+.pk-game { font-weight: 600; }
+.pk-sub { color: var(--ink2); font-size: 14px; margin-top: 2px; }
+.pk-res { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex: none; font-weight: 650; }
+.pk-res .r { display: inline-flex; align-items: center; gap: 6px; }
+.pk-res svg { width: 16px; height: 16px; }
+.pk-res.won svg, .pk-res.won .r { color: var(--good-text); }
+.pk-res.lost svg, .pk-res.lost .r { color: var(--crit-text); }
+.pk-res .u { font-variant-numeric: tabular-nums; font-size: 14px; color: var(--ink2); font-weight: 500; }
+
+/* charts */
+.legend { display: flex; flex-wrap: wrap; gap: 6px 20px; color: var(--ink2); font-size: 15px; }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.legend i { width: 18px; height: 4px; border-radius: 2px; display: inline-block; }
+.legend i.blind { background: var(--s-blind); } .legend i.aware { background: var(--s-aware); } .legend i.enh { background: var(--s-enh); }
+.legend b { color: var(--ink); font-weight: 650; font-variant-numeric: tabular-nums; }
+.chart { position: relative; width: 100%; min-width: 0; margin-top: 16px; }
+.chart svg { display: block; width: 100%; overflow: visible; touch-action: pan-y; }
+.chart text { font-family: var(--font); fill: var(--muted); font-size: 12px; }
+.chart text.val { fill: var(--ink2); font-size: 12px; font-weight: 600; }
+.chart .grid { stroke: var(--grid); stroke-width: 1; }
+.chart .base { stroke: var(--axis); stroke-width: 1; }
+.chart .ln { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .ln.blind { stroke: var(--s-blind); } .chart .ln.aware { stroke: var(--s-aware); } .chart .ln.enh { stroke: var(--s-enh); }
+.chart .bar.blind { fill: var(--s-blind); } .chart .bar.aware { fill: var(--s-aware); } .chart .bar.enh { fill: var(--s-enh); }
+.chart .pt { stroke: var(--surface); stroke-width: 2; }
+.chart .pt.blind { fill: var(--s-blind); } .chart .pt.aware { fill: var(--s-aware); } .chart .pt.enh { fill: var(--s-enh); }
+.chart .cross { stroke: var(--axis); stroke-width: 1; }
+.tip { position: absolute; z-index: 2; pointer-events: none; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font-size: 14px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14); white-space: nowrap; }
+.tip .row { display: flex; align-items: center; gap: 8px; margin-top: 3px; color: var(--ink2); }
+.tip .row b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.tip .head { font-weight: 650; color: var(--ink); }
+.empty { padding: 40px 8px; text-align: center; color: var(--ink2); }
+
+/* tables (details page) */
+.scroll { overflow-x: auto; max-width: 100%; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 9px 12px; white-space: nowrap; border-bottom: 1px solid var(--grid); }
+th { font-size: 13px; font-weight: 600; color: var(--ink2); background: var(--surface); }
+th:first-child, td:first-child { text-align: left; padding-left: 0; }
+th:last-child, td:last-child { padding-right: 0; }
+tr[aria-current="true"] td { font-weight: 650; background: color-mix(in srgb, var(--ink) 5%, transparent); }
+tr.thin td { color: var(--muted); }
+tr.total td { font-weight: 650; border-top: 1px solid var(--axis); }
+.mkey { display: inline-flex; align-items: center; gap: 8px; }
+.two { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+@media (min-width: 900px) { .two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.stack { display: flex; flex-direction: column; gap: 24px; }
+details { border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+details > summary { cursor: pointer; font-weight: 650; padding: 16px 20px; list-style-position: inside; }
+details > summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 12px; }
+details > .inner { padding: 4px 20px 20px; display: flex; flex-direction: column; gap: 24px; }
+.answer { display: flex; flex-direction: column; gap: 10px; }
+.answer p { max-width: 68ch; }
+.gloss { display: grid; gap: 8px; color: var(--ink2); }
+.gloss b { color: var(--ink); }
+.gloss p { max-width: 74ch; }
+
+/* ===== v3: sports-app look ===== */
+body { background: var(--plane); font-family: var(--font); padding-block: 0 96px; -webkit-font-smoothing: antialiased; }
+.app { gap: 18px; padding-top: 0; }
+h1, h2, h3 { font-family: var(--disp); text-transform: none; }
+h2 { font-size: 28px; font-weight: 700; letter-spacing: 0.005em; }
+h3 { font-size: 18px; font-weight: 700; }
+
+/* app bar */
+.masthead { display: flex; align-items: center; gap: 14px; padding: 18px 0 4px; background: none; box-shadow: none; border-radius: 0; color: var(--ink); }
+.brandmark { width: 44px; height: 44px; border-radius: 12px; background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; flex: none; box-shadow: 0 6px 18px color-mix(in srgb, var(--brand) 35%, transparent); }
+.brandmark svg { width: 26px; height: 26px; }
+.masthead h1 { font-size: 30px; font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1; }
+.masthead .sub { margin-top: 5px; font-size: 13px; color: var(--ink2); }
+.live { margin-left: auto; display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: var(--ink2); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 25%, transparent); }
+@media (max-width: 520px) { .live { display: none; } .masthead h1 { font-size: 26px; } }
+
+/* tabs: top segmented on desktop, bottom bar on phones */
+.tabs { position: sticky; top: 0; z-index: 20; display: flex; gap: 4px; padding: 8px 0; margin-inline: 0; background: color-mix(in srgb, var(--plane) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.tab { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; border: 0; background: transparent; color: var(--ink2); border-radius: 10px; padding: 10px 16px; font-size: 15px; font-weight: 600; }
+.tab svg { width: 20px; height: 20px; }
+.tab:hover { color: var(--ink); background: var(--surface); }
+.tab[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: inset 0 -3px 0 var(--brand); border-radius: 10px 10px 4px 4px; }
+@media (max-width: 640px) {
+  .tabs { position: fixed; inset: auto 0 0 0; z-index: 30; justify-content: space-around; padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px)); margin: 0; border-top: 1px solid var(--border); border-bottom: 0; background: color-mix(in srgb, var(--surface) 94%, transparent); }
+  .tab { flex: 1; flex-direction: column; gap: 3px; font-size: 11px; padding: 6px 4px; border-radius: 10px; }
+  .tab[aria-selected="true"] { background: transparent; box-shadow: none; color: var(--brand); }
+}
+
+.page-head h2 { font-size: 32px; }
+.panel, .rows, details { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow); }
+.lead, .sub { color: var(--ink2); }
+
+/* summary strip */
+.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 640px) { .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 14px 16px; box-shadow: var(--shadow); }
+.kpi .k { font-size: 13px; color: var(--ink2); font-weight: 500; }
+.kpi .v { font-family: var(--disp); font-size: 40px; font-weight: 700; line-height: 1.05; letter-spacing: 0.005em; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.kpi .n { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.kpi.green .v { color: var(--strong); } .kpi.gold .v { color: var(--lean); }
+
+/* chips */
+.chip { background: var(--surface); border: 1px solid var(--border); color: var(--ink2); font-weight: 600; font-size: 14px; padding: 8px 16px; }
+.chip:hover { color: var(--ink); border-color: var(--axis); }
+.chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.chip[aria-pressed="true"] .dot { box-shadow: 0 0 0 2px rgba(255,255,255,0.7); }
+select { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; color: var(--ink); }
+
+/* tier badges */
+.badge { border: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; padding: 4px 11px; text-transform: uppercase; }
+.badge.strong { background: var(--strong); color: var(--brand-ink); }
+.badge.lean { background: var(--lean-bg); color: var(--lean); box-shadow: inset 0 0 0 1.5px var(--lean); }
+.badge.pass { background: var(--grid); color: var(--ink2); }
+.badge.noline, .badge.pending { background: transparent; box-shadow: inset 0 0 0 1.5px var(--axis); color: var(--ink2); }
+
+/* team avatars */
+.av { width: 38px; height: 38px; border-radius: 50%; flex: none; display: inline-grid; place-items: center; font-family: var(--disp); font-weight: 700; font-size: 15px; letter-spacing: 0.02em; color: #fff; background: hsl(var(--h) 52% 38%); box-shadow: inset 0 0 0 2px hsl(var(--h) 60% 62% / 0.55); text-shadow: 0 1px 1px rgba(0,0,0,0.3); }
+.av.sm { width: 28px; height: 28px; font-size: 12px; }
+
+/* pick cards: scoreboard */
+.cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+@media (min-width: 900px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.gcard { position: relative; overflow: hidden; border-radius: 20px; padding: 16px 18px 16px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; }
+.gcard::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--axis); }
+.gcard.tier-strong::before { background: var(--strong); }
+.gcard.tier-lean::before { background: var(--lean); }
+.g-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: var(--ink2); font-size: 13px; font-weight: 500; padding-top: 4px; }
+.g-teams { display: flex; flex-direction: column; background: var(--raise); border-radius: 14px; padding: 4px 12px; }
+.trow { display: grid; grid-template-columns: 38px minmax(0, 1fr) auto auto; align-items: center; gap: 12px; padding: 9px 0; }
+.trow + .trow { border-top: 1px solid var(--border); }
+.trow .nm { font-weight: 600; font-size: 17px; min-width: 0; overflow-wrap: anywhere; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.trow .picktag { font-size: 11px; font-weight: 800; letter-spacing: 0.05em; color: var(--brand-ink); background: var(--strong); border-radius: 6px; padding: 2px 7px; }
+.gcard.tier-lean .picktag { background: var(--lean); color: #231700; }
+.trow .sp { font-size: 13px; font-weight: 600; color: var(--ink2); background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 3px 8px; font-variant-numeric: tabular-nums; }
+.trow .sc { font-family: var(--disp); font-size: 40px; font-weight: 700; line-height: 1; min-width: 44px; text-align: right; color: var(--ink2); font-variant-numeric: tabular-nums; }
+.trow.win .sc { color: var(--ink); }
+.callout { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 12px; padding: 12px 14px; border-radius: 14px; background: var(--strong-bg); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--strong) 45%, transparent); }
+.gcard.tier-lean .callout { background: var(--lean-bg); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--lean) 50%, transparent); }
+.callout .t { font-family: var(--disp); font-size: 28px; font-weight: 700; line-height: 1.1; letter-spacing: 0.005em; }
+.callout .why { font-size: 13px; color: var(--ink2); }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.mt { background: var(--raise); border-radius: 12px; padding: 10px 12px; min-width: 0; }
+.mt .k { font-size: 12px; color: var(--muted); font-weight: 500; }
+.mt b { display: block; font-family: var(--disp); font-size: 22px; font-weight: 700; line-height: 1.15; margin-top: 2px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 480px) { .mt { padding: 9px 8px; } .mt b { font-size: 18px; } .trow .sc { font-size: 34px; } .callout .t { font-size: 24px; } }
+.mt.edge b { color: var(--strong); }
+.gcard.tier-lean .mt.edge b { color: var(--lean); }
+.gauge { height: 5px; border-radius: 3px; background: var(--grid); margin-top: 6px; overflow: hidden; }
+.gauge i { display: block; height: 100%; background: var(--strong); border-radius: 3px; }
+.gcard.tier-lean .gauge i { background: var(--lean); }
+.wsplit { display: flex; height: 26px; border-radius: 8px; overflow: hidden; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.wsplit span { display: flex; align-items: center; padding-inline: 10px; white-space: nowrap; min-width: 0; overflow: hidden; }
+.wsplit .a { background: var(--grid); color: var(--ink2); }
+.wsplit .h { background: var(--s-aware); color: #fff; justify-content: flex-end; }
+.wsplit .fav { background: var(--strong); color: var(--brand-ink); }
+.gcard.tier-lean .wsplit .fav { background: var(--lean); color: #231700; }
+.ctx { font-size: 12.5px; color: var(--muted); }
+.neutral-tag { font-size: 11px; font-weight: 600; color: var(--ink2); background: var(--raise); border-radius: 6px; padding: 2px 7px; margin-left: 8px; }
+
+/* all-games rows */
+.day { font-family: var(--disp); font-size: 22px; font-weight: 700; color: var(--ink); text-transform: none; letter-spacing: 0.01em; margin: 14px 0 -6px; }
+.rows { overflow: hidden; }
+.grow { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px 16px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+@media (min-width: 720px) { .grow { grid-template-columns: 76px minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr); align-items: center; } }
+.grow:last-child { border-bottom: 0; }
+.grow:hover { background: var(--raise); }
+.gr-time { font-size: 13px; font-weight: 600; color: var(--ink2); font-variant-numeric: tabular-nums; }
+.gr-teams { display: flex; flex-direction: column; gap: 6px; }
+.gt { display: flex; align-items: center; gap: 10px; font-weight: 600; min-width: 0; }
+.gt.dim { color: var(--ink2); font-weight: 500; }
+.gr-line { font-size: 13px; color: var(--ink2); line-height: 1.4; }
+.gr-model { font-size: 13px; color: var(--ink2); }
+.gr-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.gr-pick b { font-weight: 700; }
+
+/* how picks work */
+.tiers { gap: 10px; }
+.tiers div { background: var(--raise); border-radius: 12px; padding: 12px 14px; }
+.notice { background: var(--lean-bg); border: 0; border-left: 4px solid var(--lean); border-radius: 12px; color: var(--ink); }
+.notice svg { color: var(--lean); }
+
+/* results */
+.eyebrow { font-size: 14px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--ink2); }
+.record { white-space: nowrap; font-family: var(--disp); font-size: clamp(60px, 13vw, 92px); font-weight: 800; letter-spacing: 0; line-height: 0.95; }
+.pill { border: 0; background: var(--raise); box-shadow: inset 0 0 0 1.5px var(--tone, var(--axis)); font-weight: 600; }
+.pill[data-tone="good"] { background: var(--win-bg); } .pill[data-tone="crit"] { background: var(--loss-bg); } .pill[data-tone="warn"] { background: var(--lean-bg); }
+.stat { background: var(--raise); border: 0; border-radius: 14px; padding: 12px 16px; }
+.stat dd { font-family: var(--disp); font-size: 34px; font-weight: 700; }
+.stat dd.pos { color: var(--good-text); } .stat dd.neg { color: var(--crit-text); }
+.pk { padding: 10px 14px; border: 0; border-radius: 14px; margin-bottom: 8px; background: var(--raise); border-left: 5px solid var(--axis); gap: 12px; }
+.pk:first-child { padding-top: 10px; }
+.pk:has(.won) { border-left-color: var(--good-text); } .pk:has(.lost) { border-left-color: var(--crit-text); }
+.pk-main { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.pk-res .r { padding: 3px 10px; border-radius: 999px; }
+.pk-res.won .r { background: var(--win-bg); } .pk-res.lost .r { background: var(--loss-bg); }
+.btn { background: var(--raise); border: 1px solid var(--border); border-radius: 10px; }
+.stat .note, .cap { color: var(--ink2); }
+th { background: transparent; color: var(--ink2); }
+tr[aria-current="true"] td { background: color-mix(in srgb, var(--brand) 10%, transparent); }
+details > summary { font-weight: 700; }
+.tip { background: var(--raise); border-color: var(--axis); }
+.chart text { fill: var(--muted); }
+.sportnav { display: flex; gap: 8px; overflow-x: auto; padding: 2px 0 6px; scrollbar-width: none; }
+.sportnav::-webkit-scrollbar { display: none; }
+.sportnav a { flex: none; text-decoration: none; color: var(--ink2); font-weight: 700; font-size: 14px; padding: 8px 16px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); }
+.sportnav a:hover { color: var(--ink); border-color: var(--axis); }
+.sportnav a[aria-current="page"] { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.badge.info { display: none; }
+.gr-pick:empty { display: none; }
+.mk { color: var(--ink2); font-size: 13px; }
+
+</style>
+
+<main class="app">
+  <header class="masthead">
+    <div class="brandmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+    <div class="mast-text">
+      <h1>Gridiron Edge</h1>
+      <p class="sub" id="asof"></p>
+    </div>
+    <span class="live"><i></i><span id="sportName"></span></span>
+  </header>
+  <nav class="sportnav" aria-label="Sport"><a href="index.html">College football</a><a href="nfl.html" aria-current="page">NFL</a><a href="nba.html">NBA</a><a href="ncaab.html">College basketball</a><a href="mlb.html">MLB</a><a href="nhl.html">NHL</a></nav>
+  <nav class="tabs" role="tablist" aria-label="Pages">
+    <button class="tab" role="tab" id="tab-week" data-tab="week"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>This week</span></button>
+    <button class="tab" role="tab" id="tab-results" data-tab="results"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Tracked picks</span></button>
+    <button class="tab" role="tab" id="tab-model" data-tab="model"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg><span>Model accuracy</span></button>
+  </nav>
+
+  <section class="page" id="page-week" role="tabpanel">
+    <div class="page-head"><h2>This week</h2><p class="lead" id="weekRange"></p></div>
+    <div class="strip" id="weekStrip"></div>
+    <div class="notice" id="note">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 6v5M10 14h.01"/></svg>
+      <div id="noteText"></div>
+    </div>
+    <div class="toolbar" id="weekTools">
+      <div class="chips" role="group" aria-label="Show">
+        <button class="chip" data-view="picks" aria-pressed="true">Picks only</button>
+        <button class="chip" data-view="all" aria-pressed="false">All games</button>
+      </div>
+    </div>
+    <div id="weekList"></div>
+    <p class="small muted">Predictions are estimates, not advice. Only bet what you can afford to lose.</p>
+  </section>
+
+  <section class="page" id="page-results" role="tabpanel" hidden>
+    <div class="page-head"><h2>Tracked picks</h2><p class="lead">Every pick is saved the first time the model makes it, with the line at that moment, and graded when the game finishes. Nothing is added after the fact.</p></div>
+    <div class="panel" id="trackPanel"></div>
+    <div class="panel" id="trackList"></div>
+  </section>
+
+  <section class="page" id="page-model" role="tabpanel" hidden>
+    <div class="page-head"><h2>Model accuracy</h2><p class="lead">How well the model's own predictions did on past games, using only information available before each game. This is scores only, because past betting lines are not available for this sport.</p></div>
+    <div class="strip" id="accStrip"></div>
+    <div class="panel"><h2>Season by season</h2><div class="body scroll"><table id="accTable"></table></div>
+      <p class="cap">Picked the winner is how often the team the model favored won. Home team wins is the simple baseline of always picking the home team. Average miss is the typical error in the final margin.</p></div>
+    <div class="panel"><h2>Are the win chances honest?</h2><p class="lead">Games grouped by the model's win chance for the home team. If the model is well calibrated, the actual home win rate matches the chance it gave.</p>
+      <div class="body scroll"><table id="calTable"></table></div></div>
+    <div class="panel gloss"><h2>What this does and does not show</h2>
+      <p><b>Good at ranking teams.</b> Picking winners better than the home-team baseline shows the ratings carry real information about team strength.</p>
+      <p><b>Not proof of an edge.</b> Betting lines already include everything these ratings know and more. Beating a coin flip on winners is much easier than beating the line, and there is no history of past lines here to test against.</p>
+      <p id="shrinkNote"></p>
+      <p><b>Tracked picks are the test.</b> The Tracked picks page grades each pick against the real line, live. Wait for a few hundred before drawing conclusions.</p></div>
+  </section>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var D = {"sport":{"key":"nfl","name":"NFL","spread":true,"label":"points"},"upcoming":[{"t":"2026-11-01T18:00:00Z","h":"Dallas Cowboys","a":"Arizona Cardinals","n":0,"sp":-7.0,"tot":54.5,"ph":30.9,"pa":23.6,"m":7.297,"hw":0.7128,"gap":0.297,"tier":"pass","side":"","ml":0.7409},{"t":"2026-11-01T18:00:00Z","h":"Tampa Bay Buccaneers","a":"Atlanta Falcons","n":0,"sp":-1.5,"tot":43.5,"ph":22.34,"pa":21.16,"m":1.188,"hw":0.5364,"gap":-0.312,"tier":"pass","side":"","ml":0.5427},{"t":"2026-11-01T18:00:00Z","h":"Buffalo Bills","a":"Baltimore Ravens","n":0,"sp":-3.0,"tot":54.5,"ph":29.17,"pa":25.33,"m":3.848,"hw":0.6165,"gap":0.848,"tier":"pass","side":"","ml":0.5934},{"t":"2026-11-01T18:00:00Z","h":"Pittsburgh Steelers","a":"Cleveland Browns","n":0,"sp":-3.5,"tot":38.5,"ph":21.21,"pa":17.29,"m":3.923,"hw":0.6187,"gap":0.423,"tier":"pass","side":"","ml":0.6369},{"t":"2026-11-01T18:00:00Z","h":"Jacksonville Jaguars","a":"Indianapolis Colts","n":0,"sp":-10.0,"tot":45.5,"ph":27.46,"pa":18.04,"m":9.426,"hw":0.7659,"gap":-0.574,"tier":"pass","side":"","ml":0.7958},{"t":"2026-11-01T18:00:00Z","h":"New York Jets","a":"Las Vegas Raiders","n":0,"sp":-1.5,"tot":46.5,"ph":23.7,"pa":22.8,"m":0.892,"hw":0.5274,"gap":-0.608,"tier":"pass","side":"","ml":0.5427},{"t":"2026-11-01T18:00:00Z","h":"Detroit Lions","a":"Minnesota Vikings","n":0,"sp":-3.0,"tot":46.5,"ph":24.96,"pa":21.54,"m":3.422,"hw":0.6039,"gap":0.422,"tier":"pass","side":"","ml":0.6038},{"t":"2026-11-01T18:00:00Z","h":"Cincinnati Bengals","a":"Tennessee Titans","n":0,"sp":-13.5,"tot":45.5,"ph":29.36,"pa":16.14,"m":13.227,"hw":0.8457,"gap":-0.273,"tier":"pass","side":"","ml":0.863},{"t":"2026-11-01T21:05:00Z","h":"Los Angeles Rams","a":"Los Angeles Chargers","n":0,"sp":-6.5,"tot":45.5,"ph":26.24,"pa":19.26,"m":6.975,"hw":0.7043,"gap":0.475,"tier":"pass","side":"","ml":0.7002},{"t":"2026-11-01T21:25:00Z","h":"Denver Broncos","a":"Kansas City Chiefs","n":0,"sp":1.5,"tot":41.5,"ph":21.01,"pa":20.49,"m":0.519,"hw":0.5159,"gap":2.019,"tier":"lean","side":"home","ml":0.4957},{"t":"2026-11-01T21:25:00Z","h":"Miami Dolphins","a":"New England Patriots","n":0,"sp":7.0,"tot":41.5,"ph":17.62,"pa":23.88,"m":-6.264,"hw":0.3148,"gap":0.736,"tier":"pass","side":"","ml":0.2591},{"t":"2026-11-02T01:20:00Z","h":"Washington Commanders","a":"Philadelphia Eagles","n":0,"sp":-6.0,"tot":40.5,"ph":22.66,"pa":17.84,"m":4.817,"hw":0.6446,"gap":-1.183,"tier":"pass","side":"","ml":0.7002},{"t":"2026-11-03T01:15:00Z","h":"Seattle Seahawks","a":"Chicago Bears","n":0,"sp":-3.0,"tot":46.5,"ph":25.1,"pa":21.4,"m":3.703,"hw":0.6122,"gap":0.703,"tier":"pass","side":"","ml":0.5996},{"t":"2026-11-06T01:15:00Z","h":"Baltimore Ravens","a":"Jacksonville Jaguars","n":0,"sp":-3.0,"tot":48.5,"ph":24.62,"pa":23.88,"m":0.743,"hw":0.5228,"gap":-2.257,"tier":"lean","side":"away","ml":0.583},{"t":"2026-11-08T14:30:00Z","h":"Atlanta Falcons","a":"Cincinnati Bengals","n":1,"sp":3.0,"tot":49.5,"ph":22.97,"pa":26.53,"m":-3.563,"hw":0.392,"gap":-0.563,"tier":"pass","side":"","ml":0.3962},{"t":"2026-11-08T18:00:00Z","h":"New Orleans Saints","a":"Cleveland Browns","n":0,"sp":-2.5,"tot":43.5,"ph":22.96,"pa":20.54,"m":2.413,"hw":0.5737,"gap":-0.087,"tier":"pass","side":"","ml":0.5514},{"t":"2026-11-08T18:00:00Z","h":"Indianapolis Colts","a":"Dallas Cowboys","n":0,"sp":4.5,"tot":51.5,"ph":23.99,"pa":27.51,"m":-3.512,"hw":0.3934,"gap":0.988,"tier":"pass","side":"","ml":0.3364},{"t":"2026-11-08T18:00:00Z","h":"Carolina Panthers","a":"Denver Broncos","n":0,"sp":2.5,"tot":44.5,"ph":20.87,"pa":23.63,"m":-2.754,"hw":0.4161,"gap":-0.254,"tier":"pass","side":"","ml":0.4365},{"t":"2026-11-08T18:00:00Z","h":"Miami Dolphins","a":"Detroit Lions","n":0,"sp":7.0,"tot":48.5,"ph":20.92,"pa":27.58,"m":-6.667,"hw":0.3039,"gap":0.333,"tier":"pass","side":"","ml":0.2428},{"t":"2026-11-08T18:00:00Z","h":"Washington Commanders","a":"Los Angeles Rams","n":0,"sp":5.5,"tot":48.5,"ph":21.21,"pa":27.29,"m":-6.073,"hw":0.3201,"gap":-0.573,"tier":"pass","side":"","ml":0.3364},{"t":"2026-11-08T18:00:00Z","h":"Philadelphia Eagles","a":"New York Giants","n":0,"sp":1.5,"tot":40.5,"ph":19.75,"pa":20.75,"m":-0.992,"hw":0.4696,"gap":0.508,"tier":"pass","side":"","ml":0.4739},{"t":"2026-11-08T18:00:00Z","h":"Kansas City Chiefs","a":"New York Jets","n":0,"sp":-9.5,"tot":43.5,"ph":26.29,"pa":17.21,"m":9.082,"hw":0.7577,"gap":-0.418,"tier":"pass","side":"","ml":0.7914},{"t":"2026-11-08T21:05:00Z","h":"Los Angeles Chargers","a":"Houston Texans","n":0,"sp":3.5,"tot":42.5,"ph":19.53,"pa":22.97,"m":-3.437,"hw":0.3957,"gap":0.063,"tier":"pass","side":"","ml":0.3775},{"t":"2026-11-08T21:25:00Z","h":"San Francisco 49ers","a":"Las Vegas Raiders","n":0,"sp":-10.0,"tot":48.5,"ph":29.16,"pa":19.34,"m":9.819,"hw":0.7751,"gap":-0.181,"tier":"pass","side":"","ml":0.8119},{"t":"2026-11-08T21:25:00Z","h":"Seattle Seahawks","a":"Arizona Cardinals","n":0,"sp":-10.5,"tot":44.5,"ph":27.53,"pa":16.97,"m":10.563,"hw":0.7919,"gap":0.063,"tier":"pass","side":"","ml":0.8271},{"t":"2026-11-08T21:25:00Z","h":"New England Patriots","a":"Green Bay Packers","n":0,"sp":-3.0,"tot":47.5,"ph":25.39,"pa":22.11,"m":3.284,"hw":0.5998,"gap":0.284,"tier":"pass","side":"","ml":0.583},{"t":"2026-11-09T01:20:00Z","h":"Chicago Bears","a":"Tampa Bay Buccaneers","n":0,"sp":-6.0,"tot":47.5,"ph":26.82,"pa":20.68,"m":6.144,"hw":0.6819,"gap":0.144,"tier":"pass","side":"","ml":0.6958}],"graded":[],"acc":{"seasons":[{"season":2021,"n":285,"su":0.6140350877192983,"home":0.519298245614035,"mae":11.497467872872575},{"season":2022,"n":283,"su":0.6537102473498233,"home":0.568904593639576,"mae":9.328747467649952},{"season":2023,"n":286,"su":0.6293706293706294,"home":0.5629370629370629,"mae":10.521832400060282},{"season":2024,"n":286,"su":0.6608391608391608,"home":0.548951048951049,"mae":10.175251581603494},{"season":2025,"n":285,"su":0.656140350877193,"home":0.5333333333333333,"mae":10.230818047669246},{"season":2026,"n":107,"su":0.616822429906542,"home":0.4953271028037383,"mae":9.91596794542013}],"overall":{"n":1532,"su":0.6409921671018277,"home":0.5430809399477807,"mae":10.321783034996834},"calib":[{"lo":0,"hi":30,"n":131,"actual":0.2748091603053435},{"lo":30,"hi":40,"n":224,"actual":0.4419642857142857},{"lo":40,"hi":50,"n":303,"actual":0.3927392739273927},{"lo":50,"hi":60,"n":319,"actual":0.5736677115987461},{"lo":60,"hi":70,"n":243,"actual":0.6378600823045267},{"lo":70,"hi":100,"n":312,"actual":0.7692307692307693}]},"shrink":0.25,"asOf":"Nov 1, 2026"};
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var MINUS = '−';
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function fmtN(n) { return n.toLocaleString('en-US'); }
+  function fmtU(v) { return (v >= 0 ? '+' : MINUS) + Math.abs(v).toFixed(1); }
+  function fmtSpread(s) { return s === 0 ? 'PK' : (s > 0 ? '+' : MINUS) + Math.abs(s).toFixed(1); }
+  function byText(home, away, m) { if (m == null) return ''; if (Math.abs(m) < 0.05) return 'Even'; return m > 0 ? home + ' by ' + m.toFixed(1) : away + ' by ' + (-m).toFixed(1); }
+  var ICON_OK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
+  var ICON_NO = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>';
+  function localDay(t) { return new Date(t).toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' }); }
+  function localShortDay(t) { return new Date(t).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }); }
+  function fmtIso(s) { var p = String(s).slice(0, 10).split('-'), M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; return M[+p[1] - 1] + ' ' + (+p[2]) + ', ' + p[0]; }
+
+  var ups = (D.upcoming || []).slice().sort(function (a, b) { return Date.parse(a.t) - Date.parse(b.t); });
+  var graded = D.graded || [];
+  function summarize(list) {
+    var w = 0, l = 0, u = 0;
+    list.forEach(function (g) { if (g.result === 'won') { w++; u += 100 / 110; } else if (g.result === 'lost') { l++; u -= 1; } });
+    return { w: w, l: l, n: w + l, units: u, winPct: w + l ? w / (w + l) : 0 };
+  }
+  var tierHist = { strong: summarize(graded.filter(function (g) { return g.tier === 'strong'; })), lean: summarize(graded.filter(function (g) { return g.tier === 'lean'; })) };
+  var st = { view: 'picks' };
+
+  function localTime(t) { return new Date(t).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }); }
+  function isPick(u) { return u.tier === 'strong' || u.tier === 'lean'; }
+  function tierLabel(t) { return { strong: 'Strong pick', lean: 'Lean', pass: 'No pick', noline: 'No line yet', pending: 'Pick pending' }[t] || ''; }
+  function lineText(u) { return u.sp == null ? 'No line yet' : 'Line: ' + byText(u.h, u.a, -u.sp); }
+  function projScore(u) {
+    if (u.ph == null || u.pa == null) return null;
+    var h = Math.round(u.ph), a = Math.round(u.pa);
+    if (h === a && u.m != null && Math.abs(u.m) >= 0.5) { if (u.m > 0) h++; else a++; }
+    return { h: h, a: a };
+  }
+  function abbr(name) {
+    var w = String(name).replace(/[^A-Za-z&' ]/g, '').split(/\s+/).filter(Boolean);
+    if (w.length >= 2) return w.map(function (x) { return x[0]; }).join('').slice(0, 3).toUpperCase();
+    return (w[0] || '?').slice(0, 3).toUpperCase();
+  }
+  function hue(name) { var h = 0; for (var i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360; return h; }
+  function av(name, sm) { return '<span class="av' + (sm ? ' sm' : '') + '" style="--h:' + hue(name) + '" aria-hidden="true">' + esc(abbr(name)) + '</span>'; }
+  function lineAbbr(h, a, m) {
+    if (m == null) return '—';
+    if (Math.abs(m) < 0.05) return 'Even';
+    return m > 0 ? abbr(h) + ' ' + MINUS + m.toFixed(1) : abbr(a) + ' ' + MINUS + (-m).toFixed(1);
+  }
+  function trow(u, side, sc, homeWins) {
+    var isH = side === 'h', team = isH ? u.h : u.a, spread = u.sp == null ? null : (isH ? u.sp : -u.sp);
+    var win = isH === homeWins, picked = isPick(u) && (u.side === 'home') === isH;
+    return '<div class="trow' + (win ? ' win' : '') + '">' + av(team) +
+      '<div class="nm">' + esc(team) + (picked ? '<span class="picktag">PICK</span>' : '') + '</div>' +
+      (spread == null ? '<span></span>' : '<span class="sp">' + fmtSpread(spread) + '</span>') +
+      '<span class="sc">' + (sc ? (isH ? sc.h : sc.a) : '') + '</span></div>';
+  }
+  function pickCard(u) {
+    var sc = projScore(u), homeWins = u.m > 0;
+    var pickTeam = u.side === 'home' ? u.h : u.a, pickLine = u.side === 'home' ? u.sp : -u.sp;
+    var th = tierHist[u.tier];
+    var ctx = th && th.n ? 'Picks this size won ' + (th.winPct * 100).toFixed(1) + '% of tracked picks so far (' + fmtN(th.n) + ' graded). Break-even is 52.4%.' : '';
+    var edge = Math.abs(u.gap), ph = Math.round(u.hw * 100), pa = 100 - ph, favHome = ph >= pa;
+    return '<article class="gcard tier-' + u.tier + '">' +
+      '<div class="g-top"><span>' + esc(localShortDay(u.t)) + ' · ' + esc(localTime(u.t)) + (u.n ? '<span class="neutral-tag">Neutral site</span>' : '') + '</span><span class="badge ' + u.tier + '">' + tierLabel(u.tier) + '</span></div>' +
+      '<div class="g-teams">' + trow(u, 'a', sc, homeWins) + trow(u, 'h', sc, homeWins) + '</div>' +
+      '<div class="callout"><span class="t">' + esc(pickTeam) + ' ' + fmtSpread(pickLine) + '</span><span class="why">Model projects ' + esc(byText(u.h, u.a, u.m)) + '</span></div>' +
+      '<div class="metrics">' +
+        '<div class="mt"><div class="k">Model line</div><b>' + esc(lineAbbr(u.h, u.a, u.m)) + '</b></div>' +
+        '<div class="mt"><div class="k">Betting line</div><b>' + esc(lineAbbr(u.h, u.a, -u.sp)) + '</b></div>' +
+        '<div class="mt edge"><div class="k">Edge</div><b>' + edge.toFixed(1) + ' pts</b><div class="gauge"><i style="width:' + Math.min(100, edge / 6 * 100).toFixed(0) + '%"></i></div></div>' +
+      '</div>' +
+      '<div class="wsplit" role="img" aria-label="Win chance: ' + esc(u.a) + ' ' + pa + '%, ' + esc(u.h) + ' ' + ph + '%"><span class="a' + (!favHome ? ' fav' : '') + '" style="width:' + pa + '%">' + esc(abbr(u.a)) + ' ' + pa + '%</span><span class="h' + (favHome ? ' fav' : '') + '" style="width:' + ph + '%">' + esc(abbr(u.h)) + ' ' + ph + '%</span></div>' +
+      (ctx ? '<p class="ctx">' + ctx + '</p>' : '') + '</article>';
+  }
+  function gameRow(u) {
+    var model, pick;
+    var neutral = u.n ? '<span class="neutral-tag">Neutral</span>' : '';
+    if (u.tier === 'pending') {
+      var hp = u.fp == null ? null : u.fp;
+      model = hp == null ? 'No win chance in the feed' : 'Feed win chance: ' + (hp >= 50 ? u.h + ' ' + hp.toFixed(0) : u.a + ' ' + (100 - hp).toFixed(0)) + '%';
+      pick = '<span class="badge pending">Pick pending</span>';
+    } else {
+      model = u.m == null ? '' : 'Model: ' + byText(u.h, u.a, u.m);
+      pick = isPick(u)
+        ? '<span class="badge ' + u.tier + '">' + tierLabel(u.tier) + '</span><b>' + esc(u.side === 'home' ? u.h : u.a) + ' ' + fmtSpread(u.side === 'home' ? u.sp : -u.sp) + '</b>'
+        : '<span class="badge ' + u.tier + '">' + tierLabel(u.tier) + '</span>';
+    }
+    return '<div class="grow"><div class="gr-time">' + esc(localTime(u.t)) + '</div>' +
+      '<div class="gr-teams"><div class="gt">' + av(u.a, true) + esc(u.a) + '</div><div class="gt">' + av(u.h, true) + esc(u.h) + neutral + '</div></div>' +
+      '<div class="gr-line">' + (u.tier === 'pending' ? '' : esc(lineText(u))) + (model ? '<br><span class="gr-model">' + esc(model) + '</span>' : '') + '</div>' +
+      '<div class="gr-pick">' + pick + '</div></div>';
+  }
+
+  function tierLabel(t) { return { strong: 'Strong pick', lean: 'Lean', pass: 'No pick', info: '', noline: '' }[t] || ''; }
+  function mkText(u) { return u.ml == null ? '' : 'Market: ' + (u.ml >= 0.5 ? u.h + ' ' + Math.round(u.ml * 100) : u.a + ' ' + Math.round((1 - u.ml) * 100)) + '%'; }
+  function gameRow(u) {
+    var fav = u.hw >= 0.5 ? u.h : u.a, fp = Math.round((u.hw >= 0.5 ? u.hw : 1 - u.hw) * 100);
+    var model = 'Model: ' + fav + ' ' + fp + '%' + (u.m != null && D.sport.spread ? ' (by ' + Math.abs(u.m).toFixed(1) + ')' : '');
+    var right = isPick(u) ? '<span class="badge ' + u.tier + '">' + tierLabel(u.tier) + '</span><b>' + esc(u.side === 'home' ? u.h : u.a) + ' ' + fmtSpread(u.side === 'home' ? u.sp : -u.sp) + '</b>' : '';
+    var mid = (u.sp != null ? 'Line: ' + esc(byText(u.h, u.a, -u.sp)) : mkText(u) ? esc(mkText(u)) : (D.sport.spread ? 'No line yet' : ''));
+    return '<div class="grow"><div class="gr-time">' + esc(localTime(u.t)) + '</div>' +
+      '<div class="gr-teams"><div class="gt">' + av(u.a, true) + esc(u.a) + '</div><div class="gt">' + av(u.h, true) + esc(u.h) + (u.n ? '<span class="neutral-tag">Neutral</span>' : '') + '</div></div>' +
+      '<div class="gr-line">' + esc(model) + '<br><span class="gr-model">' + mid + '</span></div><div class="gr-pick">' + right + '</div></div>';
+  }
+  function kpi(cls, k, v, n) { return '<div class="kpi ' + cls + '"><div class="k">' + k + '</div><div class="v">' + v + '</div><div class="n">' + n + '</div></div>'; }
+
+  function renderWeek() {
+    $('#asof').textContent = 'Updated ' + (D.asOf || '');
+    $('#sportName').textContent = D.sport.name;
+    var picks = ups.filter(isPick), has = ups.length > 0;
+    $('#weekStrip').hidden = !has;
+    if (!has) {
+      $('#weekRange').textContent = 'No games are scheduled in the next few days.';
+      $('#weekList').innerHTML = '<div class="panel"><h2>Nothing scheduled</h2><p class="lead" style="margin-top:6px">This page updates every morning. In the offseason, check back when games are close.</p></div>';
+      $('#weekTools').hidden = true; $('#note').hidden = true; return;
+    }
+    var a = Date.parse(ups[0].t), b = Date.parse(ups[ups.length - 1].t);
+    $('#weekRange').textContent = localShortDay(a) + (localShortDay(a) !== localShortDay(b) ? ' to ' + localShortDay(b) : '') + ' · ' + ups.length + ' games' + (D.sport.spread ? ' · ' + picks.length + (picks.length === 1 ? ' pick' : ' picks') : '');
+    var tr = summarize(graded);
+    var withLine = ups.filter(function (u) { return u.sp != null; }).length;
+    $('#weekStrip').innerHTML = kpi('', 'Games', ups.length, 'next few days') +
+      (D.sport.spread ? kpi('', 'Picks', picks.length, 'of ' + withLine + ' games with a line') + kpi('green', 'Strong picks', picks.filter(function (u) { return u.tier === 'strong'; }).length, '3+ points from the line') +
+        kpi('gold', 'Tracked win rate', tr.n ? (tr.winPct * 100).toFixed(1) + '%' : '—', tr.n ? tr.w + '–' + tr.l + ' graded, break-even 52.4%' : 'no graded picks yet') :
+        kpi('', 'Games with market odds', ups.filter(function (u) { return u.ml != null; }).length, 'moneyline odds from the feed'));
+    $('#noteText').innerHTML = D.sport.spread
+      ? '<b>Picks here are tracked, not backtested.</b> There is no free history of past betting lines for ' + esc(D.sport.name) + ', so the model cannot be tested against the line the way college football was. It moves each line a cautious ' + Math.round(D.shrink * 100) + '% toward its own number. Every pick is logged and graded as games finish (see Tracked picks).'
+      : '<b>Win chances only.</b> ' + esc(D.sport.name) + ' is bet on moneylines, not point spreads, so there are no picks here. The page shows the model’s win chance next to the market’s.';
+    $('#weekTools').hidden = !D.sport.spread;
+    var view = D.sport.spread ? st.view : 'all', html = '';
+    $$('#weekTools .chip').forEach(function (c) { c.setAttribute('aria-pressed', String(c.getAttribute('data-view') === st.view)); });
+    if (view === 'picks') {
+      var ps = picks.slice().sort(function (x, y) { return Math.abs(y.gap) - Math.abs(x.gap); });
+      html = ps.length ? '<div class="cards">' + ps.map(pickCard).join('') + '</div>' : '<div class="panel"><h2>No picks right now</h2><p class="lead" style="margin-top:6px">The model is close to the line on every game that has one. Switch to All games to see its predictions.</p></div>';
+    } else {
+      var day = null, open = false;
+      ups.forEach(function (u) {
+        var d = localDay(Date.parse(u.t));
+        if (d !== day) { if (open) html += '</div>'; html += '<p class="day">' + esc(d) + '</p><div class="rows">'; day = d; open = true; }
+        html += gameRow(u);
+      });
+      if (open) html += '</div>';
+    }
+    $('#weekList').innerHTML = html;
+  }
+
+  function renderTrack() {
+    var q = summarize(graded);
+    $('#trackPanel').innerHTML = !D.sport.spread
+      ? '<h2>No picks for ' + esc(D.sport.name) + '</h2><p class="lead" style="margin-top:6px">This sport is bet on moneylines, so the model shows win chances only.</p>'
+      : (graded.length ? '<div class="rhero"><div><p class="eyebrow">Record on tracked picks</p><p class="record">' + q.w + '–' + q.l + '</p><p class="rsub">' + (q.n ? (q.winPct * 100).toFixed(1) + '% won. Break-even is 52.4% at standard odds.' : '') + '</p></div>' +
+        '<dl class="stats"><div class="stat"><dt>Profit</dt><dd class="' + (q.units >= 0 ? 'pos' : 'neg') + '">' + fmtU(q.units) + ' units</dd><span class="note">one standard bet each, at -110 odds</span></div>' +
+        '<div class="stat"><dt>Graded picks</dt><dd>' + q.n + '</dd><span class="note">' + (graded.length - q.n) + ' pushed</span></div></dl></div>'
+        : '<h2>No graded picks yet</h2><p class="lead" style="margin-top:6px">Picks are saved each morning and graded once the games finish. Check back after the first games are played.</p>');
+    var list = graded.slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); }).slice(0, 60);
+    $('#trackList').hidden = !list.length;
+    $('#trackList').innerHTML = '<h2>Graded picks</h2><p class="lead">Newest first.</p><ul class="plist body">' + list.map(function (g) {
+      var pt = g.side === 'home' ? g.h : g.a, pl = g.side === 'home' ? g.sp : -g.sp, won = g.result === 'won';
+      return '<li class="pk">' + '<div class="pk-main">' + av(pt, true) + '<div><div class="pk-game">' + esc(g.a) + ' ' + g.ap + ' at ' + esc(g.h) + ' ' + g.hp + '</div><div class="pk-sub">Picked ' + esc(pt) + ' ' + fmtSpread(pl) + ' · ' + fmtIso(g.date) + '</div></div></div>' +
+        '<div class="pk-res ' + (g.result === 'won' ? 'won' : g.result === 'lost' ? 'lost' : '') + '"><span class="r">' + (won ? ICON_OK + 'Won' : g.result === 'lost' ? ICON_NO + 'Lost' : 'Push') + '</span><span class="u">' + fmtU(g.u) + ' units</span></div></li>';
+    }).join('') + '</ul>';
+  }
+
+  function renderModel() {
+    var A = D.acc;
+    $('#shrinkNote').innerHTML = D.sport.spread ? '<b>How picks are made.</b> The model’s margin is blended with the line: line + ' + Math.round(D.shrink * 100) + '% of the gap. That blend is a cautious guess carried over from college football, where small corrections to the line were the only thing that held up. It has not been tuned for ' + esc(D.sport.name) + '.' : '';
+    if (!A || !A.seasons.length) { $('#accStrip').innerHTML = ''; $('#accTable').innerHTML = '<tr><td>No backtest yet.</td></tr>'; return; }
+    var o = A.overall;
+    $('#accStrip').innerHTML = kpi('', 'Games tested', fmtN(o.n), A.seasons[0].season + ' to ' + A.seasons[A.seasons.length - 1].season) +
+      kpi('green', 'Picked the winner', (o.su * 100).toFixed(1) + '%', 'home team baseline ' + (o.home * 100).toFixed(1) + '%') +
+      kpi('', 'Average miss', o.mae.toFixed(1), D.sport.label + ' on the final margin');
+    $('#accTable').innerHTML = '<tr><th>Season</th><th>Games</th><th>Picked the winner</th><th>Home team wins</th><th>Average miss</th></tr>' +
+      A.seasons.map(function (s) { return '<tr><td>' + s.season + '</td><td>' + fmtN(s.n) + '</td><td>' + (s.su * 100).toFixed(1) + '%</td><td>' + (s.home * 100).toFixed(1) + '%</td><td>' + s.mae.toFixed(1) + '</td></tr>'; }).join('') +
+      '<tr class="total"><td>All</td><td>' + fmtN(o.n) + '</td><td>' + (o.su * 100).toFixed(1) + '%</td><td>' + (o.home * 100).toFixed(1) + '%</td><td>' + o.mae.toFixed(1) + '</td></tr>';
+    $('#calTable').innerHTML = '<tr><th>Model gave the home team</th><th>Games</th><th>Home team actually won</th></tr>' +
+      A.calib.map(function (c) { return '<tr><td>' + c.lo + '–' + c.hi + '%</td><td>' + fmtN(c.n) + '</td><td>' + (c.actual * 100).toFixed(1) + '%</td></tr>'; }).join('');
+  }
+
+  var TABS = ['week', 'results', 'model'];
+  function showTab(id) {
+    if (TABS.indexOf(id) < 0) id = 'week';
+    TABS.forEach(function (t) { var on = t === id; $('#page-' + t).hidden = !on; var b = $('#tab-' + t); b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+  }
+  $$('.tab').forEach(function (b) { b.addEventListener('click', function () { var id = b.getAttribute('data-tab'); try { if (location.hash !== '#' + id) { location.hash = id; return; } } catch (e) { } showTab(id); }); });
+  $$('#weekTools .chip').forEach(function (c) { c.addEventListener('click', function () { st.view = c.getAttribute('data-view'); renderWeek(); }); });
+  window.addEventListener('hashchange', function () { try { showTab(location.hash.replace('#', '')); } catch (e) { } });
+  renderWeek(); renderTrack(); renderModel();
+  var h0 = 'week'; try { h0 = location.hash.replace('#', '') || 'week'; } catch (e) { }
+  showTab(h0);
+})();
+</script>
+
+</body>
+</html>
