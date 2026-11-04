@@ -1,50 +1,39 @@
 game_id,season,week,date,home_team,away_team,neutral_site,spread_home,total,home_ml_prob
-401892633,2027,1,2026-11-04 00:00:00,Toronto Maple Leafs,Utah Mammoth,False,1.5,6.5,0.43650793650793646
-401892634,2027,1,2026-11-04 00:00:00,Montreal Canadiens,Winnipeg Jets,False,-1.5,5.5,0.6092362344582594
-401892635,2027,1,2026-11-04 00:00:00,Tampa Bay Lightning,Detroit Red Wings,False,-1.5,6.5,0.6957699520733487
-401892637,2027,1,2026-11-04 00:00:00,New York Rangers,St. Louis Blues,False,-1.5,5.5,0.5217391304347826
-401892638,2027,1,2026-11-04 00:00:00,Philadelphia Flyers,Minnesota Wild,False,1.5,5.5,0.3775334481388264
-401892639,2027,1,2026-11-04 00:00:00,Pittsburgh Penguins,Vegas Golden Knights,False,-1.5,6.5,0.5108342361863488
-401892640,2027,1,2026-11-04 00:00:00,Washington Capitals,Dallas Stars,False,1.5,5.5,0.5043297540699688
-401892641,2027,1,2026-11-04 00:00:00,Columbus Blue Jackets,Colorado Avalanche,False,1.5,6.5,0.4675324675324675
-401892636,2027,1,2026-11-04 00:30:00,New Jersey Devils,Edmonton Oilers,False,-1.5,6.5,0.5829926410466066
-401892642,2027,1,2026-11-04 01:00:00,Nashville Predators,Carolina Hurricanes,False,1.5,6.5,0.3630958183058778
-401892643,2027,1,2026-11-04 02:00:00,Vancouver Canucks,Anaheim Ducks,False,1.5,6.5,0.4170073589533933
-401892645,2027,1,2026-11-05 00:30:00,Florida Panthers,Chicago Blackhawks,False,-1.5,5.5,0.6853932584269663
-401892644,2027,1,2026-11-05 00:30:00,Buffalo Sabres,Ottawa Senators,False,-1.5,6.5,0.551441114716549
-401892647,2027,1,2026-11-05 03:00:00,Seattle Kraken,Calgary Flames,False,-1.5,6.5,0.5829926410466066
-401892646,2027,1,2026-11-05 03:00:00,Los Angeles Kings,San Jose Sharks,False,-1.5,6.5,0.5829926410466066
-401892655,2027,1,2026-11-06 00:00:00,Columbus Blue Jackets,Dallas Stars,False,,,
-401892654,2027,1,2026-11-06 00:00:00,Pittsburgh Penguins,Boston Bruins,False,,,
-401892653,2027,1,2026-11-06 00:00:00,New York Rangers,Philadelphia Flyers,False,,,
-401892651,2027,1,2026-11-06 00:00:00,New Jersey Devils,St. Louis Blues,False,,,
-401892650,2027,1,2026-11-06 00:00:00,Tampa Bay Lightning,Chicago Blackhawks,False,,,
-401892649,2027,1,2026-11-06 00:00:00,Detroit Red Wings,Vegas Golden Knights,False,,,
-401892648,2027,1,2026-11-06 00:00:00,Montreal Canadiens,Utah Mammoth,False,,,
-401892652,2027,1,2026-11-06 00:00:00,New York Islanders,Carolina Hurricanes,False,,,
-401892657,2027,1,2026-11-06 01:00:00,Edmonton Oilers,Anaheim Ducks,False,,,
-401892656,2027,1,2026-11-06 01:00:00,Winnipeg Jets,Vancouver Canucks,False,,,
-401892658,2027,1,2026-11-06 02:30:00,Colorado Avalanche,Nashville Predators,False,,,
+401892645,2027,1,2026-11-05 00:30:00,Florida Panthers,Chicago Blackhawks,False,-1.5,6.5,0.690792883054068
+401892644,2027,1,2026-11-05 00:30:00,Buffalo Sabres,Ottawa Senators,False,-1.5,6.5,0.5427435387673957
+401892647,2027,1,2026-11-05 03:00:00,Seattle Kraken,Calgary Flames,False,-1.5,6.5,0.551441114716549
+401892646,2027,1,2026-11-05 03:00:00,Los Angeles Kings,San Jose Sharks,False,-1.5,6.5,0.5996387718242023
+401892654,2027,1,2026-11-06 00:00:00,Pittsburgh Penguins,Boston Bruins,False,1.5,6.5,0.5043297540699688
+401892653,2027,1,2026-11-06 00:00:00,New York Rangers,Philadelphia Flyers,False,-1.5,5.5,0.5829926410466066
+401892652,2027,1,2026-11-06 00:00:00,New York Islanders,Carolina Hurricanes,False,1.5,5.5,0.4003612281757977
+401892651,2027,1,2026-11-06 00:00:00,New Jersey Devils,St. Louis Blues,False,-1.5,5.5,0.6224665518611737
+401892650,2027,1,2026-11-06 00:00:00,Tampa Bay Lightning,Chicago Blackhawks,False,-1.5,6.5,0.7600000000000001
+401892649,2027,1,2026-11-06 00:00:00,Detroit Red Wings,Vegas Golden Knights,False,1.5,5.5,0.43650793650793646
+401892648,2027,1,2026-11-06 00:00:00,Montreal Canadiens,Utah Mammoth,False,1.5,6.5,0.4739134147382802
+401892655,2027,1,2026-11-06 00:00:00,Columbus Blue Jackets,Dallas Stars,False,1.5,5.5,0.4572564612326044
+401892657,2027,1,2026-11-06 01:00:00,Edmonton Oilers,Anaheim Ducks,False,-1.5,6.5,0.6224665518611737
+401892656,2027,1,2026-11-06 01:00:00,Winnipeg Jets,Vancouver Canucks,False,-1.5,6.5,0.6574752261956054
+401892658,2027,1,2026-11-06 02:30:00,Colorado Avalanche,Nashville Predators,False,-1.5,6.5,0.644729178800233
 401892659,2027,1,2026-11-07 00:00:00,Buffalo Sabres,Columbus Blue Jackets,False,,,
 401892660,2027,1,2026-11-07 01:00:00,Minnesota Wild,San Jose Sharks,False,,,
 401892661,2027,1,2026-11-07 01:00:00,Calgary Flames,Anaheim Ducks,False,,,
 401892662,2027,1,2026-11-07 17:30:00,Washington Capitals,Florida Panthers,False,,,
 401892663,2027,1,2026-11-07 18:00:00,Nashville Predators,St. Louis Blues,False,,,
 401892664,2027,1,2026-11-07 22:00:00,Seattle Kraken,New York Rangers,False,,,
-401892665,2027,1,2026-11-08 00:00:00,Toronto Maple Leafs,Montreal Canadiens,False,,,
 401892666,2027,1,2026-11-08 00:00:00,Ottawa Senators,Utah Mammoth,False,,,
+401892665,2027,1,2026-11-08 00:00:00,Toronto Maple Leafs,Montreal Canadiens,False,,,
 401892667,2027,1,2026-11-08 00:00:00,New York Islanders,New Jersey Devils,False,,,
 401892668,2027,1,2026-11-08 01:00:00,Carolina Hurricanes,Chicago Blackhawks,False,,,
-401892669,2027,1,2026-11-08 01:00:00,Dallas Stars,San Jose Sharks,False,,,
 401892670,2027,1,2026-11-08 01:00:00,Minnesota Wild,Tampa Bay Lightning,False,,,
-401892671,2027,1,2026-11-08 02:00:00,Colorado Avalanche,Detroit Red Wings,False,,,
+401892669,2027,1,2026-11-08 01:00:00,Dallas Stars,San Jose Sharks,False,,,
 401892672,2027,1,2026-11-08 02:00:00,Los Angeles Kings,Pittsburgh Penguins,False,,,
+401892671,2027,1,2026-11-08 02:00:00,Colorado Avalanche,Detroit Red Wings,False,,,
 401892673,2027,1,2026-11-08 03:00:00,Edmonton Oilers,Vancouver Canucks,False,,,
 401892674,2027,1,2026-11-08 18:00:00,Boston Bruins,Florida Panthers,False,,,
 401892675,2027,1,2026-11-08 20:30:00,Buffalo Sabres,Vegas Golden Knights,False,,,
 401892678,2027,1,2026-11-09 00:00:00,Calgary Flames,Philadelphia Flyers,False,,,
-401892677,2027,1,2026-11-09 00:00:00,Winnipeg Jets,Tampa Bay Lightning,False,,,
 401892676,2027,1,2026-11-09 00:00:00,Toronto Maple Leafs,New Jersey Devils,False,,,
+401892677,2027,1,2026-11-09 00:00:00,Winnipeg Jets,Tampa Bay Lightning,False,,,
 401892679,2027,1,2026-11-09 01:00:00,Anaheim Ducks,Pittsburgh Penguins,False,,,
 401892680,2027,1,2026-11-10 01:00:00,Edmonton Oilers,New York Rangers,False,,,
 401892681,2027,1,2026-11-10 02:30:00,Vancouver Canucks,Philadelphia Flyers,False,,,
@@ -56,3 +45,9 @@ game_id,season,week,date,home_team,away_team,neutral_site,spread_home,total,home
 401892687,2027,1,2026-11-11 01:00:00,St. Louis Blues,Detroit Red Wings,False,,,
 401892688,2027,1,2026-11-11 01:00:00,Winnipeg Jets,New Jersey Devils,False,,,
 401892689,2027,1,2026-11-11 03:00:00,Los Angeles Kings,Nashville Predators,False,,,
+401892690,2027,1,2026-11-12 00:00:00,Buffalo Sabres,Tampa Bay Lightning,False,,,
+401892691,2027,1,2026-11-12 00:30:00,Calgary Flames,New York Rangers,False,,,
+401892692,2027,1,2026-11-12 02:00:00,Edmonton Oilers,Philadelphia Flyers,False,,,
+401892693,2027,1,2026-11-12 02:30:00,Vegas Golden Knights,Utah Mammoth,False,,,
+401892694,2027,1,2026-11-12 03:00:00,Anaheim Ducks,Nashville Predators,False,,,
+401892695,2027,1,2026-11-12 03:00:00,San Jose Sharks,Pittsburgh Penguins,False,,,
