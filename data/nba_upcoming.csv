@@ -1,27 +1,13 @@
 game_id,season,week,date,home_team,away_team,neutral_site,spread_home,total,home_ml_prob
-401909922,2027,1,2026-11-05 00:00:00,Detroit Pistons,Philadelphia 76ers,False,-2.5,219.5,0.551441114716549
-401909923,2027,1,2026-11-05 00:00:00,Washington Wizards,Atlanta Hawks,False,3.5,230.5,0.4176257809930944
-401909924,2027,1,2026-11-05 00:30:00,Boston Celtics,Milwaukee Bucks,False,-10.5,221.5,0.7911756040070712
-401909925,2027,1,2026-11-05 00:30:00,Brooklyn Nets,Charlotte Hornets,False,3.5,212.5,0.39676686627924124
-401909926,2027,1,2026-11-05 00:30:00,New York Knicks,Chicago Bulls,False,-12.5,233.5,0.8230385075316538
-401909927,2027,1,2026-11-05 01:00:00,Memphis Grizzlies,Indiana Pacers,False,-5.5,228.5,0.6619351587434906
-401909928,2027,1,2026-11-05 01:00:00,New Orleans Pelicans,Utah Jazz,False,-5.5,232.5,0.6697688381867308
-401909929,2027,1,2026-11-05 01:00:00,Oklahoma City Thunder,Cleveland Cavaliers,False,-3.5,226.5,0.5927983025461807
-401909930,2027,1,2026-11-05 01:30:00,Houston Rockets,Minnesota Timberwolves,False,-7.5,219.5,0.7063073982564916
-401909932,2027,1,2026-11-05 02:00:00,Phoenix Suns,Portland Trail Blazers,False,3.5,227.5,0.41534168343176064
-401909931,2027,1,2026-11-05 02:00:00,Denver Nuggets,Toronto Raptors,False,-4.5,231.5,0.6305231081767394
-401909933,2027,1,2026-11-05 02:30:00,San Antonio Spurs,Dallas Mavericks,False,-12.5,226.5,0.8277347114556418
-401909934,2027,1,2026-11-05 03:00:00,Sacramento Kings,Los Angeles Lakers,False,12.5,233.5,0.17303532804614274
-401909935,2027,1,2026-11-05 03:30:00,LA Clippers,Miami Heat,False,5.5,233.5,0.355638745905475
-401909936,2027,1,2026-11-06 02:00:00,Phoenix Suns,Orlando Magic,False,,,
-401909937,2027,1,2026-11-06 03:00:00,Golden State Warriors,Miami Heat,False,,,
-401909287,2027,1,2026-11-07 00:00:00,Atlanta Hawks,Washington Wizards,False,,,
+401909936,2027,1,2026-11-06 02:00:00,Phoenix Suns,Orlando Magic,False,-1.5,222.5,0.5109861135524697
+401909937,2027,1,2026-11-06 03:00:00,Golden State Warriors,Miami Heat,False,-7.5,233.5,0.7006060901102646
 401909288,2027,1,2026-11-07 00:00:00,Charlotte Hornets,Boston Celtics,False,,,
+401909287,2027,1,2026-11-07 00:00:00,Atlanta Hawks,Washington Wizards,False,,,
 401909289,2027,1,2026-11-07 00:30:00,Cleveland Cavaliers,Philadelphia 76ers,False,,,
-401909292,2027,1,2026-11-07 01:00:00,Milwaukee Bucks,Toronto Raptors,False,,,
 401909293,2027,1,2026-11-07 01:00:00,New Orleans Pelicans,Minnesota Timberwolves,False,,,
-401909290,2027,1,2026-11-07 01:00:00,Dallas Mavericks,Utah Jazz,False,,,
+401909292,2027,1,2026-11-07 01:00:00,Milwaukee Bucks,Toronto Raptors,False,,,
 401909291,2027,1,2026-11-07 01:00:00,Memphis Grizzlies,Oklahoma City Thunder,False,,,
+401909290,2027,1,2026-11-07 01:00:00,Dallas Mavericks,Utah Jazz,False,,,
 401909294,2027,1,2026-11-07 03:00:00,Los Angeles Lakers,Portland Trail Blazers,False,,,
 401909295,2027,1,2026-11-07 03:00:00,Sacramento Kings,San Antonio Spurs,False,,,
 401909938,2027,1,2026-11-07 22:00:00,Indiana Pacers,Denver Nuggets,True,,,
@@ -38,9 +24,9 @@ game_id,season,week,date,home_team,away_team,neutral_site,spread_home,total,home
 401909949,2027,1,2026-11-09 01:00:00,Milwaukee Bucks,Boston Celtics,False,,,
 401909950,2027,1,2026-11-09 02:00:00,LA Clippers,New Orleans Pelicans,False,,,
 401909951,2027,1,2026-11-09 02:00:00,Sacramento Kings,Miami Heat,False,,,
-401909954,2027,1,2026-11-10 00:00:00,Detroit Pistons,Washington Wizards,False,,,
-401909953,2027,1,2026-11-10 00:00:00,Charlotte Hornets,Cleveland Cavaliers,False,,,
 401909952,2027,1,2026-11-10 00:00:00,Atlanta Hawks,Los Angeles Lakers,False,,,
+401909953,2027,1,2026-11-10 00:00:00,Charlotte Hornets,Cleveland Cavaliers,False,,,
+401909954,2027,1,2026-11-10 00:00:00,Detroit Pistons,Washington Wizards,False,,,
 401909955,2027,1,2026-11-10 00:30:00,Toronto Raptors,Memphis Grizzlies,False,,,
 401909956,2027,1,2026-11-10 01:00:00,Dallas Mavericks,Indiana Pacers,False,,,
 401909957,2027,1,2026-11-10 01:30:00,Houston Rockets,Denver Nuggets,False,,,
@@ -56,9 +42,13 @@ game_id,season,week,date,home_team,away_team,neutral_site,spread_home,total,home
 401909967,2027,1,2026-11-12 00:00:00,New York Knicks,Cleveland Cavaliers,False,,,
 401909966,2027,1,2026-11-12 00:00:00,Indiana Pacers,Washington Wizards,False,,,
 401909972,2027,1,2026-11-12 01:00:00,New Orleans Pelicans,Brooklyn Nets,False,,,
+401909971,2027,1,2026-11-12 01:00:00,Milwaukee Bucks,Los Angeles Lakers,False,,,
 401909970,2027,1,2026-11-12 01:00:00,Memphis Grizzlies,Denver Nuggets,False,,,
 401909969,2027,1,2026-11-12 01:00:00,Chicago Bulls,San Antonio Spurs,False,,,
-401909971,2027,1,2026-11-12 01:00:00,Milwaukee Bucks,Los Angeles Lakers,False,,,
 401909973,2027,1,2026-11-12 02:00:00,Utah Jazz,Orlando Magic,False,,,
 401909974,2027,1,2026-11-12 02:30:00,Houston Rockets,Golden State Warriors,False,,,
 401909975,2027,1,2026-11-12 03:00:00,Portland Trail Blazers,Oklahoma City Thunder,False,,,
+401909977,2027,1,2026-11-13 00:00:00,Washington Wizards,Detroit Pistons,False,,,
+401909976,2027,1,2026-11-13 00:00:00,Philadelphia 76ers,Toronto Raptors,False,,,
+401909978,2027,1,2026-11-13 01:00:00,Minnesota Timberwolves,Dallas Mavericks,False,,,
+401909979,2027,1,2026-11-13 02:00:00,Phoenix Suns,Charlotte Hornets,False,,,
