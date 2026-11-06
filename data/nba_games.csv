@@ -8338,3 +8338,5 @@ game_id,season,week,date,home_team,away_team,home_points,away_points,neutral_sit
 401909933,2027,3,2026-11-05 02:30:00,San Antonio Spurs,Dallas Mavericks,112.0,111.0,False,,
 401909934,2027,3,2026-11-05 03:00:00,Sacramento Kings,Los Angeles Lakers,103.0,116.0,False,,
 401909935,2027,3,2026-11-05 03:30:00,LA Clippers,Miami Heat,116.0,117.0,False,,
+401909936,2027,3,2026-11-06 02:00:00,Phoenix Suns,Orlando Magic,117.0,104.0,False,,
+401909937,2027,3,2026-11-06 03:00:00,Golden State Warriors,Miami Heat,120.0,100.0,False,,

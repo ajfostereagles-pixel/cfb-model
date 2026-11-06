@@ -1,2 +1,3 @@
 game_id,date,home_team,away_team,spread_home,tier,pick_side,gap,home_points,away_points,result,units
 401873033,2026-11-01T21:25:00Z,Denver Broncos,Kansas City Chiefs,1.5,lean,home,2.0188703495056783,28.0,24.0,won,0.9090909090909091
+401873037,2026-11-06T01:15:00Z,Baltimore Ravens,Jacksonville Jaguars,-3.0,lean,away,-2.257349870800878,10.0,33.0,won,0.9090909090909091

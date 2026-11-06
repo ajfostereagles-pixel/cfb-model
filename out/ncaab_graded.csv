@@ -16,3 +16,12 @@ game_id,date,home_team,away_team,spread_home,tier,pick_side,gap,home_points,away
 401921808,2026-11-04T01:00:00Z,LSU,LSU New Orleans,-27.5,strong,away,-3.5803730406372978,100.0,57.0,lost,-1.0
 401920343,2026-11-04T03:00:00Z,California Baptist,North Florida,-11.5,strong,home,3.4200063938776903,63.0,71.0,lost,-1.0
 401917513,2026-11-05T03:00:00Z,Santa Clara,Milwaukee,-16.5,lean,home,2.468560234407832,95.0,72.0,won,0.9090909090909091
+401921682,2026-11-06T00:00:00Z,Sacred Heart,Maine,-5.5,strong,home,3.117211824031344,72.0,74.0,lost,-1.0
+401919823,2026-11-06T00:00:00Z,Notre Dame,Mercyhurst,-21.5,strong,away,-3.123124702033227,83.0,56.0,lost,-1.0
+401909717,2026-11-06T00:00:00Z,Syracuse,Central Connecticut,-23.5,strong,away,-3.0762144991399225,102.0,49.0,lost,-1.0
+401921219,2026-11-06T00:00:00Z,Navy,Delaware State,-8.5,lean,home,2.860651015698224,66.0,60.0,lost,-1.0
+401920377,2026-11-06T00:00:00Z,Virginia Tech,Mercer,-20.5,strong,away,-3.1764642441926014,96.0,67.0,lost,-1.0
+401920913,2026-11-06T01:00:00Z,Tulsa,Northern Illinois,-13.5,strong,home,5.085590367607679,94.0,75.0,won,0.9090909090909091
+401921094,2026-11-06T01:00:00Z,Rice,East Texas A&M,-3.5,lean,home,2.7190123680077356,71.0,72.0,lost,-1.0
+401909563,2026-11-06T01:00:00Z,Duke,Coastal Carolina,-41.5,lean,away,-2.6500392022565364,113.0,52.0,lost,-1.0
+401906864,2026-11-06T01:00:00Z,Texas,Gardner-Webb,-41.5,strong,away,-3.0971894405816585,98.0,50.0,lost,-1.0
