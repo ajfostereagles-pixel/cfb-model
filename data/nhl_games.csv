@@ -8670,3 +8670,6 @@ game_id,season,week,date,home_team,away_team,home_points,away_points,neutral_sit
 401892656,2027,6,2026-11-06 00:00:00,Winnipeg Jets,Vancouver Canucks,6.0,2.0,False,,
 401892657,2027,6,2026-11-06 01:00:00,Edmonton Oilers,Anaheim Ducks,4.0,5.0,False,,
 401892658,2027,6,2026-11-06 02:30:00,Colorado Avalanche,Nashville Predators,2.0,3.0,False,,
+401892659,2027,6,2026-11-07 00:00:00,Buffalo Sabres,Columbus Blue Jackets,5.0,2.0,False,,
+401892660,2027,6,2026-11-07 01:00:00,Minnesota Wild,San Jose Sharks,4.0,1.0,False,,
+401892661,2027,6,2026-11-07 01:00:00,Calgary Flames,Anaheim Ducks,3.0,5.0,False,,

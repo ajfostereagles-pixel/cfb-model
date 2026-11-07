@@ -1,60 +1,115 @@
 game_id,season,week,date,home_team,away_team,neutral_site,spread_home,total
-401858288,2026,10,2026-11-07 00:00:00,SMU,Virginia Tech,False,-6.5,56.5
-401862818,2026,10,2026-11-07 00:30:00,East Carolina,South Florida,False,-1.5,39.5
-401858510,2026,10,2026-11-07 01:00:00,Illinois,Nebraska,False,4.0,50.5
-401864533,2026,10,2026-11-07 02:00:00,Nevada,New Mexico,False,10.0,38.5
-401856855,2026,10,2026-11-07 03:15:00,Arizona,TCU,False,-6.5,46.5
-401856743,2026,10,2026-11-07 17:00:00,Missouri,Texas,False,3.0,42.5
-401858512,2026,10,2026-11-07 17:00:00,Minnesota,UCLA,False,4.5,38.5
-401856849,2026,10,2026-11-07 17:00:00,Utah,BYU,False,-4.5,48.5
-401858292,2026,10,2026-11-07 17:00:00,UConn,North Carolina,False,7.5,54.5
-401856853,2026,10,2026-11-07 17:00:00,Baylor,Iowa State,False,-9.5,51.5
-401858285,2026,10,2026-11-07 17:00:00,Syracuse,Clemson,False,2.5,49.5
-401858289,2026,10,2026-11-07 17:00:00,Boston College,Florida State,False,6.5,52.5
-401862822,2026,10,2026-11-07 17:00:00,Tulane,Tulsa,False,2.5,49.5
+401856743,2026,10,2026-11-07 17:00:00,Missouri,Texas,False,2.5,44.5
+401862822,2026,10,2026-11-07 17:00:00,Tulane,Tulsa,False,3.0,50.5
+401868268,2026,10,2026-11-07 17:00:00,Marist,Morehead State,False,-16.5,53.5
+401868232,2026,10,2026-11-07 17:00:00,Dayton,Valparaiso,False,-8.5,47.5
+401866682,2026,10,2026-11-07 17:00:00,Sacred Heart,Towson,False,1.5,50.5
+401866681,2026,10,2026-11-07 17:00:00,Monmouth,North Carolina A&T,False,-20.5,56.5
+401867933,2026,10,2026-11-07 17:00:00,Mercyhurst,Wagner,False,-8.5,49.5
+401867810,2026,10,2026-11-07 17:00:00,Yale,Brown,False,-7.0,46.5
+401858292,2026,10,2026-11-07 17:00:00,UConn,North Carolina,False,7.5,55.5
+401858289,2026,10,2026-11-07 17:00:00,Boston College,Florida State,False,5.5,53.5
+401858285,2026,10,2026-11-07 17:00:00,Syracuse,Clemson,False,1.5,50.5
+401856849,2026,10,2026-11-07 17:00:00,Utah,BYU,False,-4.0,49.5
+401856853,2026,10,2026-11-07 17:00:00,Baylor,Iowa State,False,-10.0,50.5
+401868005,2026,10,2026-11-07 17:00:00,Lehigh,Colgate,False,-4.5,43.5
+401867976,2026,10,2026-11-07 17:00:00,Norfolk State,North Carolina Central,False,4.0,51.5
+401867922,2026,10,2026-11-07 17:00:00,Duquesne,Robert Morris,False,-10.0,47.5
+401867914,2026,10,2026-11-07 17:00:00,New Haven,Long Island University,False,4.5,42.5
+401858512,2026,10,2026-11-07 17:00:00,Minnesota,UCLA,False,3.5,38.5
+401867839,2026,10,2026-11-07 17:00:00,Princeton,Dartmouth,False,1.5,41.5
+401868020,2026,10,2026-11-07 17:30:00,Georgetown,Holy Cross,False,7.0,47.5
 401858515,2026,10,2026-11-07 17:30:00,Purdue,Maryland,False,-5.5,56.5
-401858286,2026,10,2026-11-07 17:30:00,NC State,Duke,False,4.0,51.5
-401856738,2026,10,2026-11-07 17:45:00,Auburn,Arkansas,False,-10.5,53.5
+401858286,2026,10,2026-11-07 17:30:00,NC State,Duke,False,4.0,52.5
+401856738,2026,10,2026-11-07 17:45:00,Auburn,Arkansas,False,-10.5,54.5
+401867824,2026,10,2026-11-07 18:00:00,Harvard,Columbia,False,-21.5,47.5
+401868343,2026,10,2026-11-07 18:00:00,Chattanooga,Mercer,False,2.5,40.5
+401868259,2026,10,2026-11-07 18:00:00,Drake,San Diego,False,1.5,64.5
+401868224,2026,10,2026-11-07 18:00:00,Davidson,Stetson,False,-1.5,60.5
+401868038,2026,10,2026-11-07 18:00:00,Villanova,Richmond,False,-8.5,47.5
+401868216,2026,10,2026-11-07 18:00:00,Butler,St. Thomas (MN),False,-1.5,54.5
+401868031,2026,10,2026-11-07 18:00:00,William & Mary,Lafayette,False,2.5,52.5
+401867832,2026,10,2026-11-07 18:00:00,Cornell,Pennsylvania,False,-6.5,45.5
 401869945,2026,10,2026-11-07 18:00:00,Coastal Carolina,Old Dominion,False,-6.5,44.5
-401856854,2026,10,2026-11-07 18:00:00,Kansas State,Oklahoma State,False,6.5,62.5
-401869927,2026,10,2026-11-07 19:30:00,App State,Georgia State,False,-6.5,54.5
+401866683,2026,10,2026-11-07 18:00:00,Bryant,UAlbany,False,10.5,44.5
+401868399,2026,10,2026-11-07 18:00:00,Western Carolina,Wofford,False,-4.5,56.5
+401868350,2026,10,2026-11-07 18:00:00,East Tennessee State,Samford,False,-13.5,48.5
+401867996,2026,10,2026-11-07 18:00:00,Bucknell,Fordham,False,1.5,44.5
+401867957,2026,10,2026-11-07 18:00:00,Delaware State,Morgan State,False,-3.5,52.5
+401867904,2026,10,2026-11-07 18:00:00,Stonehill,Central Connecticut,False,7.0,53.5
+401866686,2026,10,2026-11-07 18:00:00,New Hampshire,Rhode Island,False,7.0,45.5
+401866684,2026,10,2026-11-07 18:00:00,Campbell,Stony Brook,False,-7.0,65.5
+401856854,2026,10,2026-11-07 18:00:00,Kansas State,Oklahoma State,False,7.0,63.5
+401868191,2026,10,2026-11-07 18:30:00,Gardner-Webb,Lindenwood,False,-5.5,43.5
+401866685,2026,10,2026-11-07 19:00:00,Elon,Hampton,False,-22.5,49.5
+401868252,2026,10,2026-11-07 19:00:00,Northwestern State,UT Rio Grande Valley,False,20.5,56.5
+401868379,2026,10,2026-11-07 19:00:00,The Citadel,Furman,False,3.0,41.5
+401867852,2026,10,2026-11-07 19:00:00,North Dakota,Illinois State,False,-6.5,52.5
+401872617,2026,10,2026-11-07 19:00:00,Northern Iowa,South Dakota State,False,15.5,50.5
+401868176,2026,10,2026-11-07 19:00:00,Charleston Southern,UT Martin,False,-4.5,44.5
+401867872,2026,10,2026-11-07 19:00:00,Murray State,Youngstown State,False,30.5,62.5
+401868393,2026,10,2026-11-07 19:30:00,Tennessee Tech,VMI,False,-38.5,49.5
+401869927,2026,10,2026-11-07 19:30:00,App State,Georgia State,False,-6.5,53.5
+401868945,2026,10,2026-11-07 20:00:00,Southern,Bethune-Cookman,False,-3.0,55.5
+401868939,2026,10,2026-11-07 20:00:00,Grambling,Arkansas-Pine Bluff,False,1.5,64.5
+401868363,2026,10,2026-11-07 20:00:00,Alcorn State,Florida A&M,False,-10.0,60.5
+401856744,2026,10,2026-11-07 20:00:00,South Carolina,Texas A&M,False,-6.5,52.5
+401868961,2026,10,2026-11-07 20:00:00,Jackson State,Mississippi Valley State,False,-24.5,56.5
+401868302,2026,10,2026-11-07 20:00:00,Prairie View A&M,Alabama A&M,False,3.0,57.5
+401869936,2026,10,2026-11-07 20:00:00,Arkansas State,UL Monroe,False,-14.5,52.5
+401868184,2026,10,2026-11-07 20:00:00,Eastern Illinois,Western Illinois,False,4.0,54.5
+401868153,2026,10,2026-11-07 20:00:00,Southern Utah,Northern Colorado,False,-10.0,54.5
+401868116,2026,10,2026-11-07 20:00:00,Montana,Portland State,False,-24.5,65.5
 401871073,2026,10,2026-11-07 20:00:00,Kennesaw State,Delaware,False,1.5,57.5
-401869936,2026,10,2026-11-07 20:00:00,Arkansas State,UL Monroe,False,-14.5,53.5
-401856744,2026,10,2026-11-07 20:00:00,South Carolina,Texas A&M,False,-7.0,52.5
-401856740,2026,10,2026-11-07 20:30:00,LSU,Alabama,False,-6.0,52.5
-401858290,2026,10,2026-11-07 20:30:00,Wake Forest,Merrimack,False,-47.5,58.5
-401869951,2026,10,2026-11-07 20:30:00,Georgia Southern,Marshall,False,-10.5,54.5
-401862820,2026,10,2026-11-07 20:30:00,Navy,Temple,False,-7.5,54.5
+401868331,2026,10,2026-11-07 20:00:00,Texas Southern,Alabama State,False,8.5,55.5
+401856740,2026,10,2026-11-07 20:30:00,LSU,Alabama,False,-6.0,53.5
 401871076,2026,10,2026-11-07 20:30:00,Middle Tennessee,Western Kentucky,False,2.5,53.5
+401869951,2026,10,2026-11-07 20:30:00,Georgia Southern,Marshall,False,-7.0,54.5
+401858514,2026,10,2026-11-07 20:30:00,Ohio State,Oregon,False,-7.5,44.5
 401862819,2026,10,2026-11-07 20:30:00,UAB,Charlotte,False,-8.5,47.5
-401858514,2026,10,2026-11-07 20:30:00,Ohio State,Oregon,False,-7.5,45.5
-401856851,2026,10,2026-11-07 20:30:00,Houston,Cincinnati,False,-10.5,61.5
+401868200,2026,10,2026-11-07 20:30:00,Tennessee State,Southeast Missouri State,False,11.5,47.5
+401858290,2026,10,2026-11-07 20:30:00,Wake Forest,Merrimack,False,-46.5,57.5
+401862820,2026,10,2026-11-07 20:30:00,Navy,Temple,False,-7.0,54.5
 401858516,2026,10,2026-11-07 20:30:00,Washington,Penn State,False,-2.5,44.5
-401856850,2026,10,2026-11-07 20:45:00,Kansas,UCF,False,-3.0,47.5
+401856851,2026,10,2026-11-07 20:30:00,Houston,Cincinnati,False,-10.5,61.5
+401856850,2026,10,2026-11-07 20:45:00,Kansas,UCF,False,-5.5,48.5
+401869153,2026,10,2026-11-07 21:00:00,Nicholls,East Texas A&M,False,3.0,45.5
+401868068,2026,10,2026-11-07 21:00:00,Austin Peay,Eastern Kentucky,False,-17.5,50.5
 401871074,2026,10,2026-11-07 21:00:00,Florida International,Missouri State,False,-4.5,49.5
-401864534,2026,10,2026-11-07 21:00:00,San José State,Northern Illinois,False,-11.5,52.5
-401862821,2026,10,2026-11-07 21:00:00,North Texas,Rice,False,-16.5,64.5
-401871098,2026,10,2026-11-07 21:00:00,Troy,Louisiana Tech,False,5.5,47.5
-401858517,2026,10,2026-11-07 21:15:00,Wisconsin,Rutgers,False,-19.5,46.5
+401871098,2026,10,2026-11-07 21:00:00,Troy,Louisiana Tech,False,6.5,47.5
+401864534,2026,10,2026-11-07 21:00:00,San José State,Northern Illinois,False,-12.5,52.5
+401868313,2026,10,2026-11-07 21:00:00,Lamar,Stephen F. Austin,False,7.0,49.5
+401862821,2026,10,2026-11-07 21:00:00,North Texas,Rice,False,-15.5,64.5
 401856742,2026,10,2026-11-07 21:15:00,Mississippi State,Vanderbilt,False,-3.0,48.5
-401869968,2026,10,2026-11-07 22:00:00,Louisiana,South Alabama,False,-7.5,57.5
-401860911,2026,10,2026-11-07 23:00:00,Colorado State,Boise State,False,17.5,68.5
-401856745,2026,10,2026-11-07 23:15:00,Tennessee,Kentucky,False,-5.5,49.5
+401858517,2026,10,2026-11-07 21:15:00,Wisconsin,Rutgers,False,-19.5,45.5
+401869968,2026,10,2026-11-07 22:00:00,Louisiana,South Alabama,False,-7.0,56.5
+401869140,2026,10,2026-11-07 22:00:00,Houston Christian,McNeese,False,-3.0,43.5
+401868082,2026,10,2026-11-07 22:00:00,Cal Poly,Northern Arizona,False,14.0,62.5
+401868137,2026,10,2026-11-07 22:00:00,Central Arkansas,West Georgia,False,-14.0,48.5
+401868090,2026,10,2026-11-07 22:00:00,Idaho,Eastern Washington,False,-9.5,67.5
+401868108,2026,10,2026-11-07 23:00:00,Idaho State,Montana State,False,15.5,60.5
+401867862,2026,10,2026-11-07 23:00:00,Indiana State,Southern Illinois,False,5.5,56.5
+401860911,2026,10,2026-11-07 23:00:00,Colorado State,Boise State,False,16.5,68.5
+401856745,2026,10,2026-11-07 23:15:00,Tennessee,Kentucky,False,-6.0,49.5
+401868321,2026,10,2026-11-08 00:00:00,SE Louisiana,Incarnate Word,False,4.0,55.5
 401871075,2026,10,2026-11-08 00:00:00,Jacksonville State,Sam Houston,False,-16.5,45.5
+401868166,2026,10,2026-11-08 00:00:00,UC Davis,Utah Tech,False,-17.5,58.5
+401868057,2026,10,2026-11-08 00:00:00,Tarleton State,Abilene Christian,False,-10.0,58.5
+401868152,2026,10,2026-11-08 00:00:00,North Alabama,West Florida,False,-5.5,45.5
 401858287,2026,10,2026-11-08 00:30:00,Georgia Tech,Louisville,False,14.5,62.5
-401856852,2026,10,2026-11-08 00:30:00,Arizona State,Colorado,False,-3.5,48.5
-401862823,2026,10,2026-11-08 00:30:00,Army,Air Force,False,-4.0,44.5
-401858511,2026,10,2026-11-08 00:30:00,Michigan,Michigan State,False,-14.5,39.5
-401858291,2026,10,2026-11-08 00:30:00,Notre Dame,Miami,False,-7.0,54.5
-401858513,2026,10,2026-11-08 00:30:00,Northwestern,Iowa,False,-1.5,45.5
+401862823,2026,10,2026-11-08 00:30:00,Army,Air Force,False,-4.0,43.5
 401856741,2026,10,2026-11-08 00:30:00,Ole Miss,Georgia,False,3.5,56.5
-401856739,2026,10,2026-11-08 00:45:00,Florida,Oklahoma,False,-6.0,45.5
-401870795,2026,10,2026-11-08 01:00:00,New Mexico State,Liberty,False,16.5,46.5
-401860913,2026,10,2026-11-08 02:30:00,Utah State,Fresno State,False,2.5,42.5
-401864532,2026,10,2026-11-08 02:30:00,UTEP,Hawai'i,False,8.5,48.5
-401856856,2026,10,2026-11-08 02:30:00,Texas Tech,West Virginia,False,-16.5,65.5
-401864535,2026,10,2026-11-08 03:30:00,UNLV,Wyoming,False,-4.5,48.5
-401860912,2026,10,2026-11-08 03:30:00,Oregon State,Texas State,False,-6.5,70.5
+401858513,2026,10,2026-11-08 00:30:00,Northwestern,Iowa,False,3.0,42.5
+401858511,2026,10,2026-11-08 00:30:00,Michigan,Michigan State,False,-14.0,39.5
+401858291,2026,10,2026-11-08 00:30:00,Notre Dame,Miami,False,-7.0,54.5
+401856852,2026,10,2026-11-08 00:30:00,Arizona State,Colorado,False,-3.0,47.5
+401856739,2026,10,2026-11-08 00:45:00,Florida,Oklahoma,False,-4.5,45.5
+401870795,2026,10,2026-11-08 01:00:00,New Mexico State,Liberty,False,15.5,46.5
+401864532,2026,10,2026-11-08 02:30:00,UTEP,Hawai'i,False,7.5,48.5
+401860913,2026,10,2026-11-08 02:30:00,Utah State,Fresno State,False,1.5,43.5
+401856856,2026,10,2026-11-08 02:30:00,Texas Tech,West Virginia,False,-16.5,66.5
+401860912,2026,10,2026-11-08 03:30:00,Oregon State,Texas State,False,-5.5,71.5
+401864535,2026,10,2026-11-08 03:30:00,UNLV,Wyoming,False,-3.5,49.5
 401866458,2026,11,2026-11-11 00:00:00,Akron,Western Michigan,False,,
 401866459,2026,11,2026-11-11 00:00:00,Bowling Green,Kent State,False,,
 401866460,2026,11,2026-11-11 01:00:00,Miami (OH),Ohio,False,,
@@ -64,57 +119,57 @@ game_id,season,week,date,home_team,away_team,neutral_site,spread_home,total
 401862824,2026,11,2026-11-13 01:00:00,South Florida,Memphis,False,,
 401869969,2026,11,2026-11-13 02:00:00,UL Monroe,Louisiana,False,,
 401858293,2026,11,2026-11-14 00:00:00,Pittsburgh,Florida State,False,,
-401858526,2026,11,2026-11-14 02:00:00,UCLA,Illinois,False,-12.5,47.5
+401858526,2026,11,2026-11-14 02:00:00,UCLA,Illinois,False,-11.5,47.5
 401856860,2026,11,2026-11-14 03:15:00,Colorado,Houston,False,,
-401856859,2026,11,2026-11-14 05:00:00,Iowa State,Cincinnati,False,,
 401856857,2026,11,2026-11-14 05:00:00,UCF,Arizona State,False,,
+401856861,2026,11,2026-11-14 05:00:00,West Virginia,Kansas,False,,
+401858298,2026,11,2026-11-14 05:00:00,North Carolina,Louisville,False,2.5,59.5
+401856862,2026,11,2026-11-14 05:00:00,TCU,Kansas State,False,,
+401856859,2026,11,2026-11-14 05:00:00,Iowa State,Cincinnati,False,,
 401856885,2026,11,2026-11-14 05:00:00,LSU,Texas,False,-5.5,46.5
 401856888,2026,11,2026-11-14 05:00:00,Texas A&M,Tennessee,False,-8.5,55.5
 401858299,2026,11,2026-11-14 05:00:00,Virginia Tech,Stanford,False,,
+401856863,2026,11,2026-11-14 05:00:00,Oklahoma State,Texas Tech,False,1.5,63.5
+401856864,2026,11,2026-11-14 05:00:00,Arizona,Utah,False,1.5,51.5
+401856884,2026,11,2026-11-14 05:00:00,Kentucky,Florida,False,-1.5,55.5
+401856887,2026,11,2026-11-14 05:00:00,Oklahoma,Ole Miss,False,-4.0,53.5
+401856883,2026,11,2026-11-14 05:00:00,Georgia,Missouri,False,-12.5,46.5
 401858519,2026,11,2026-11-14 05:00:00,Iowa,Purdue,False,,
 401856858,2026,11,2026-11-14 05:00:00,BYU,Baylor,False,-7.0,47.5
-401856861,2026,11,2026-11-14 05:00:00,West Virginia,Kansas,False,,
-401858298,2026,11,2026-11-14 05:00:00,North Carolina,Louisville,False,2.5,59.5
-401856887,2026,11,2026-11-14 05:00:00,Oklahoma,Ole Miss,False,-4.0,53.5
-401856884,2026,11,2026-11-14 05:00:00,Kentucky,Florida,False,-1.5,55.5
-401856883,2026,11,2026-11-14 05:00:00,Georgia,Missouri,False,-12.5,46.5
-401856864,2026,11,2026-11-14 05:00:00,Arizona,Utah,False,1.5,51.5
-401856863,2026,11,2026-11-14 05:00:00,Oklahoma State,Texas Tech,False,1.5,63.5
-401856862,2026,11,2026-11-14 05:00:00,TCU,Kansas State,False,,
 401856886,2026,11,2026-11-14 17:00:00,Mississippi State,Auburn,False,,
+401858296,2026,11,2026-11-14 17:00:00,Miami,Duke,False,-21.0,55.5
 401858300,2026,11,2026-11-14 17:00:00,NC State,Syracuse,False,,
 401858301,2026,11,2026-11-14 17:00:00,SMU,Wake Forest,False,3.0,56.5
+401861967,2026,11,2026-11-14 17:00:00,UConn,James Madison,False,,
 401858520,2026,11,2026-11-14 17:00:00,Maryland,Wisconsin,False,,
 401858522,2026,11,2026-11-14 17:00:00,Ohio State,Northwestern,False,-9.5,48.5
-401858296,2026,11,2026-11-14 17:00:00,Miami,Duke,False,-21.0,55.5
-401861967,2026,11,2026-11-14 17:00:00,UConn,James Madison,False,,
-401858525,2026,11,2026-11-14 17:30:00,Rutgers,Nebraska,False,,
 401858297,2026,11,2026-11-14 17:30:00,Clemson,Georgia Tech,False,,
+401858525,2026,11,2026-11-14 17:30:00,Rutgers,Nebraska,False,,
 401856889,2026,11,2026-11-14 17:45:00,Vanderbilt,Alabama,False,,
 401862825,2026,11,2026-11-14 18:00:00,Charlotte,East Carolina,False,,
-401862829,2026,11,2026-11-14 18:00:00,Temple,UAB,False,,
 401869937,2026,11,2026-11-14 18:00:00,Coastal Carolina,Arkansas State,False,,
-401870769,2026,11,2026-11-14 19:00:00,Sam Houston,Kennesaw State,False,,
+401862829,2026,11,2026-11-14 18:00:00,Temple,UAB,False,,
 401862828,2026,11,2026-11-14 19:00:00,Rice,Tulane,False,,
+401870769,2026,11,2026-11-14 19:00:00,Sam Houston,Kennesaw State,False,,
 401871060,2026,11,2026-11-14 20:00:00,Delaware,Florida International,False,,
 401870796,2026,11,2026-11-14 20:00:00,Missouri State,New Mexico State,False,,
 401862826,2026,11,2026-11-14 20:30:00,Tulsa,Florida Atlantic,False,,
-401858295,2026,11,2026-11-14 20:30:00,Virginia,California,False,,
-401869952,2026,11,2026-11-14 20:30:00,Georgia State,Georgia Southern,False,,
-401858294,2026,11,2026-11-14 20:30:00,Notre Dame,Boston College,False,,
-401870752,2026,11,2026-11-14 20:30:00,Western Kentucky,Jacksonville State,False,,
-401858518,2026,11,2026-11-14 20:30:00,Indiana,USC,False,-7.0,50.5
-401858523,2026,11,2026-11-14 20:30:00,Oregon,Michigan,False,-5.5,44.5
-401871061,2026,11,2026-11-14 20:30:00,Liberty,Middle Tennessee,False,,
 401864536,2026,11,2026-11-14 20:30:00,Northern Illinois,Nevada,False,,
+401869952,2026,11,2026-11-14 20:30:00,Georgia State,Georgia Southern,False,,
+401858523,2026,11,2026-11-14 20:30:00,Oregon,Michigan,False,-5.5,44.5
+401870752,2026,11,2026-11-14 20:30:00,Western Kentucky,Jacksonville State,False,,
+401871061,2026,11,2026-11-14 20:30:00,Liberty,Middle Tennessee,False,,
+401858518,2026,11,2026-11-14 20:30:00,Indiana,USC,False,-7.0,50.5
+401858294,2026,11,2026-11-14 20:30:00,Notre Dame,Boston College,False,,
+401858295,2026,11,2026-11-14 20:30:00,Virginia,California,False,,
 401860916,2026,11,2026-11-14 21:00:00,Texas State,Fresno State,False,,
 401858521,2026,11,2026-11-14 21:15:00,Michigan State,Washington,False,,
 401871099,2026,11,2026-11-14 22:00:00,Louisiana Tech,Southern Miss,False,,
 401869928,2026,11,2026-11-14 23:00:00,Marshall,App State,False,,
 401860914,2026,11,2026-11-14 23:00:00,Boise State,Oregon State,False,-4.5,62.5
 401864538,2026,11,2026-11-15 00:00:00,Air Force,San José State,False,,
-401871100,2026,11,2026-11-15 00:00:00,South Alabama,Troy,False,,
 401858524,2026,11,2026-11-15 00:00:00,Penn State,Minnesota,False,,
+401871100,2026,11,2026-11-15 00:00:00,South Alabama,Troy,False,,
 401864539,2026,11,2026-11-15 00:30:00,New Mexico,UNLV,False,,
 401856882,2026,11,2026-11-15 00:45:00,Arkansas,South Carolina,False,,
 401862827,2026,11,2026-11-15 02:00:00,UTSA,North Texas,False,,
